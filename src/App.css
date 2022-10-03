@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+
 * {
     margin: 0;
 }
@@ -7,9 +9,15 @@ body {
 }
 
 #card {
-    background-color: white;
+    background: #092269 url("src/imgs/background_white.png") no-repeat top left;
+    background-size:  100% 100%;
+    font-family: 'Arimo', sans-serif;
+    color: white;
+    height: 600px;
+    width: 1250px;
 }
 
 #card > table > tr > img {
     height:  50px;
+    border-radius: 100%;
 }
