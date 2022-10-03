@@ -20,10 +20,10 @@ function App() {
           <h1>{userName}</h1>
           <h2>Aluno de {userMajor}</h2>
           <table>
-            <tr>{userEmail}</tr>
-            <tr>{userPhone}</tr>
-            <tr>{userURL}</tr>
-            <tr>{userLocation}</tr>
+            <tr><img src="src\imgs\mail_icon.png" alt="Mail Icon" />{userEmail}</tr>
+            <tr><img src="src\imgs\phone_icon.png" alt="Phone Icon" />{userPhone}</tr>
+            <tr><img src="src\imgs\person_icon.png" alt="Person Icon" />{userURL}</tr>
+            <tr><img src="src\imgs\location_icon.png" alt="Location Icon" />{userLocation}</tr>
           </table>
         </div>
       </div>
