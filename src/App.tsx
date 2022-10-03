@@ -17,9 +17,10 @@ function App() {
         <div className='container' id='card'>
           <h4>Universidade Federal de</h4>
           <h2>Uberlândia</h2>
-          <h1>{userName}</h1>
-          <h2>Aluno de {userMajor}</h2>
+
           <table>
+            <tr><h1>{userName}</h1></tr>
+            <tr><h2>Aluno de {userMajor}</h2></tr>
             <tr><img src="src\imgs\mail_icon.png" alt="Mail Icon" />{userEmail}</tr>
             <tr><img src="src\imgs\phone_icon.png" alt="Phone Icon" />{userPhone}</tr>
             <tr><img src="src\imgs\person_icon.png" alt="Person Icon" />{userURL}</tr>
