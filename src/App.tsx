@@ -15,10 +15,14 @@ function App() {
         <button>Professor</button>
         <button>Outro</button>
         <div className='container' id='card'>
-          <h4>Universidade Federal de</h4>
-          <h2>Uberlândia</h2>
 
           <table>
+            <h4>Universidade Federal de</h4>
+            <h2>Uberlândia</h2>
+          </table>
+          
+
+          <table id='userInfo'>
             <tr><h1>{userName}</h1></tr>
             <tr><h2>Aluno de {userMajor}</h2></tr>
             <tr><img src="src\imgs\mail_icon.png" alt="Mail Icon" />{userEmail}</tr>
