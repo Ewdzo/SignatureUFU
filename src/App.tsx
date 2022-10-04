@@ -2,6 +2,7 @@ import './App.css'
 
 function App() {
   const userName = "Enzo Weder";
+  const userPronouns = "o/a/e";
   const userMajor = "Sistemas de Informação";
   const userPhone = "(85) 99421-6158";
   const userEmail = "enzoweder@ufu.br"
@@ -24,7 +25,7 @@ function App() {
 
           <table id='userInfo'>
             <tr><h1>{userName}</h1></tr>
-            <tr><h2>Aluno de {userMajor}</h2></tr>
+            <tr><h2>Alun{userPronouns} de {userMajor}</h2></tr>
             <tr><img src="src\imgs\mail_icon.png" alt="Mail Icon" />{userEmail}</tr>
             <tr><img src="src\imgs\phone_icon.png" alt="Phone Icon" />{userPhone}</tr>
             <tr><img src="src\imgs\person_icon.png" alt="Person Icon" />{userURL}</tr>
