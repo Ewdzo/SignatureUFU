@@ -12,11 +12,19 @@ function App() {
 
   return (
     <>
-      <div className="container" id='user-type' >
+      <div className="container" id='user-type-picker' >
         <button>Aluno</button>
         <button>Professor</button>
         <button>Outro</button>
       </div>
+
+      <div className="container" id='card-theme-picker' >
+        <input type="radio" name="card-theme" id="blue-theme" value="blue" />
+        <label htmlFor="blue-theme">Blue</label>
+        <input type="radio" name="card-theme" id="white-theme" value="white" />
+        <label htmlFor="white-theme">White</label>
+      </div>
+
       <div className='container' id='card'>
 
         <table>
