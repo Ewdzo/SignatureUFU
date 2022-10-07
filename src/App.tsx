@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './App.css'
 
 function App() {
@@ -9,6 +10,11 @@ function App() {
   const userEmail = "enzoweder@ufu.br"
   const userURL = "www.ufu.com.br"
   const userLocation = "UFU - Monte Carmelo - Unidade Araras"
+  const cardTheme = "white"
+
+  useEffect(() => {
+    document.getElementById("card")!.style.backgroundImage = `url("src/imgs/background_${cardTheme}.png")`;
+  })
 
   return (
     <>
