@@ -17,17 +17,17 @@ body {
     position: relative;
 }
 
-#card > table:nth-of-type(1) {
+#universityInfo {
     position: absolute;
     top: 44%;
     left: 13%;
 }
 
-#card > table:nth-of-type(1) > h4 {
+#universityInfo > tbody > tr > td > h4 {
     font-size: 21px;
 }
 
-#card > table:nth-of-type(1) > h2 {
+#universityInfo > tbody > tr > td > h2 {
     margin-top: 7px;
     font-size: 32px;
     font-weight: bolder;
@@ -39,35 +39,35 @@ body {
     top: 24%;
 }
 
-#userInfo > tr {
+#userInfo > tbody > tr > td {
     display: flex;
     align-items: center;
     margin: 10px 0;
 }
 
-#userInfo > tr:nth-child(1){
+#userInfo > tbody > tr:nth-child(1){
     font-size: 25px;
     margin-bottom: 0;
 }
 
-#userInfo > tr:nth-child(2){
+#userInfo > tbody > tr:nth-child(2){
     font-size: 17px;
     margin-top: 0;
     margin-bottom: 85px;
 }
 
-#userInfo > tr:nth-child(3), #userInfo > tr:nth-child(4), #userInfo > tr:nth-child(5), #userInfo > tr:nth-child(6){
+#userInfo > tbody > tr:nth-child(3), #userInfo > tbody > tr:nth-child(4), #userInfo > tbody > tr:nth-child(5), #userInfo > tbody > tr:nth-child(6){
     font-size: 23px;
     font-weight: 400;
 }
 
-#userInfo > tr > img {
+#userInfo > tbody > tr > td > img {
     height:  40px;
     border-radius: 100%;
     margin-right: 15px;
 }
 
-#userInfo > tr > h2, #card > table > h4 {
+#userInfo > tbody > tr > td > h2, #universityInfo > tbody > tr > td > h4 {
     font-weight: 100;
 }
 
