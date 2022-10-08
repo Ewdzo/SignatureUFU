@@ -4,22 +4,25 @@ export function Card(props : any) {
         <>
             <div className='container' id='card'>
 
-            <table>
-            <h4>Universidade Federal de</h4>
-            <h2>Uberlândia</h2>
+            <table id="universityInfo">
+                <tbody>
+                    <tr><td><h4>Universidade Federal de</h4></td></tr>
+                    <tr><td><h2>Uberlândia</h2></td></tr>
+                </tbody>           
             </table>
-
 
             <table id='userInfo'>
-            <tr><h1>{props.userName}</h1></tr>
-            <tr><h2>{props.userType}{props.userPronouns} de {props.userMajor}</h2></tr>
-            <tr><img src="src\imgs\mail_icon.png" alt="Mail Icon" />{props.userEmail}</tr>
-            <tr><img src="src\imgs\phone_icon.png" alt="Phone Icon" />{props.userPhone}</tr>
-            <tr><img src="src\imgs\person_icon.png" alt="Person Icon" />{props.userURL}</tr>
-            <tr><img src="src\imgs\location_icon.png" alt="Location Icon" />{props.userLocation}</tr>
+                <tbody>
+                    <tr><td><h1>{props.userName}</h1></td></tr>
+                    <tr><td><h2>{props.userType}{props.userPronouns} de {props.userMajor}</h2></td></tr>
+                    <tr><td><img src="src\imgs\mail_icon.png" alt="Mail Icon" />{props.userEmail}</td></tr>
+                    <tr><td><img src="src\imgs\phone_icon.png" alt="Phone Icon" />{props.userPhone}</td></tr>
+                    <tr><td><img src="src\imgs\person_icon.png" alt="Person Icon" />{props.userURL}</td></tr>
+                    <tr><td><img src="src\imgs\location_icon.png" alt="Location Icon" />{props.userLocation}</td></tr>
+                </tbody>
             </table>
             </div>
-            <link rel="stylesheet" href={`card${props.cardTheme}.css`} />
+            <link rel="stylesheet" href={`${props.cardTheme}Card.css`} />
         </>
 
     )
