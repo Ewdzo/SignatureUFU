@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import './App.css'
+import { Card } from './components/card';
 
 function App() {
   const userName = "Enzo Weder";
@@ -30,25 +31,8 @@ function App() {
         <input type="radio" name="card-theme" id="white-theme" value="white" />
         <label htmlFor="white-theme">White</label>
       </div>
-
-      <div className='container' id='card'>
-
-        <table>
-          <h4>Universidade Federal de</h4>
-          <h2>Uberlândia</h2>
-        </table>
-        
-
-        <table id='userInfo'>
-          <tr><h1>{userName}</h1></tr>
-          <tr><h2>{userType}{userPronouns} de {userMajor}</h2></tr>
-          <tr><img src="src\imgs\mail_icon.png" alt="Mail Icon" />{userEmail}</tr>
-          <tr><img src="src\imgs\phone_icon.png" alt="Phone Icon" />{userPhone}</tr>
-          <tr><img src="src\imgs\person_icon.png" alt="Person Icon" />{userURL}</tr>
-          <tr><img src="src\imgs\location_icon.png" alt="Location Icon" />{userLocation}</tr>
-        </table>
-      </div>
-
+      
+      <Card userName={userName} userType={userType} userPronouns={userPronouns} userMajor={userMajor} userPhone={userPhone} userEmail={userEmail} userURL={userURL} userLocation={userLocation} />
     </>
 
   )
