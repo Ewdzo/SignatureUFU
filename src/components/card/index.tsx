@@ -22,7 +22,7 @@ export function Card(props : any) {
                 </tbody>
             </table>
             </div>
-            <link rel="stylesheet" href={`${props.cardTheme}Card.css`} />
+            <link rel="stylesheet" href={`./src/components/card/${props.cardTheme}Card.css`} />
         </>
 
     )

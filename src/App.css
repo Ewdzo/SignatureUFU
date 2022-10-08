@@ -8,10 +8,7 @@ body {
 }
 
 #card {
-    background: #092269 no-repeat top left;
-    background-size:  100% 100%;
     font-family: 'Arimo', sans-serif;
-    color: white;
     height: 600px;
     width: 1250px;
     position: relative;
