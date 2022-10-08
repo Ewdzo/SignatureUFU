@@ -19,7 +19,7 @@ export function Card(props : any) {
             <tr><img src="src\imgs\location_icon.png" alt="Location Icon" />{props.userLocation}</tr>
             </table>
             </div>
-        
+            <link rel="stylesheet" href={`card${props.cardTheme}.css`} />
         </>
 
     )
