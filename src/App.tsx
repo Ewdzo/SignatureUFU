@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import './App.css'
 import { Card } from './components/card';
 
@@ -10,7 +11,23 @@ function App() {
   const userEmail = "enzoweder@ufu.br"
   const userURL = "www.ufu.com.br"
   const userLocation = "UFU - Monte Carmelo - Unidade Araras"
-  const cardTheme = "blue"
+  const [cardTheme, setCardTheme] = useState("blue" as string);
+
+
+  const setCard = () => {
+
+    const checkedTheme = (document.querySelector('input[name="card-theme"]:checked') as HTMLInputElement).value ;
+    
+
+    if(checkedTheme && checkedTheme != null) {
+      setCardTheme(checkedTheme as any);
+    }
+  }
+
+  useEffect(() => {
+    const cardThemePickers = document.querySelectorAll('input[name="card-theme"]');
+    cardThemePickers.forEach( element => element.addEventListener('click', setCard) )
+  })
 
   return (
     <>
