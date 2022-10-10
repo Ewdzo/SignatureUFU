@@ -1,3 +1,4 @@
+import html2canvas from 'html2canvas';
 import { useEffect, useState } from 'react';
 import './App.css'
 import { Card } from './components/card';
@@ -18,15 +19,21 @@ function App() {
 
     const checkedTheme = (document.querySelector('input[name="card-theme"]:checked') as HTMLInputElement).value ;
     
-
     if(checkedTheme && checkedTheme != null) {
       setCardTheme(checkedTheme as any);
     }
   }
 
+  const printCard = () => {
+    html2canvas((document.querySelector("#card") as HTMLElement), {scale: 2}).then(canvas => {
+      document.body.appendChild(canvas)
+    });
+  }
+
   useEffect(() => {
     const cardThemePickers = document.querySelectorAll('input[name="card-theme"]');
     cardThemePickers.forEach( element => element.addEventListener('click', setCard) )
+    
   })
 
   return (
