@@ -1,4 +1,5 @@
 import html2canvas from 'html2canvas';
+import QrScanner from 'qr-scanner';
 import { useEffect, useState } from 'react';
 import './App.css'
 import { Card } from './components/card';
@@ -30,12 +31,28 @@ function App() {
     });
   }
 
+  const scanQR = () => {
+
+    const qrCodeSubmit = document.getElementById("qr-code-submit") as HTMLInputElement;
+    const qrCode = qrCodeSubmit.files![0];
+    if (!qrCode) {
+      return;
+    }
+    QrScanner.scanImage(qrCode, { returnDetailedScanResult: true })
+      .then(result => console.log(result))
+      .catch(e => console.log('No QR code found.'));
+  };
+
+
   useEffect(() => {
     const cardThemePickers = document.querySelectorAll('input[name="card-theme"]');
     cardThemePickers.forEach( element => element.addEventListener('click', setCard) )
-    
+
+    const submitButton = document.getElementById("submit-button");
+    (submitButton as HTMLInputElement).onclick = () => {scanQR()}
   })
 
+  
   return (
     <>
       <div className="container" id='user-type-picker' >
@@ -52,6 +69,8 @@ function App() {
       </div>
 
       <input type="file" id="qr-code-submit" name="" />
+      <input type="button" value="submit" id='submit-button'/>
+  
       
       <Card userName={userName} userType={userType} userPronouns={userPronouns} userMajor={userMajor} userPhone={userPhone} userEmail={userEmail} userURL={userURL} userLocation={userLocation} cardTheme={cardTheme} />
     </>
