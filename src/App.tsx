@@ -51,7 +51,7 @@ function App() {
         <label htmlFor="white-theme">White</label>
       </div>
 
-      <input type="image" src="" alt="" />
+      <input type="file" id="qr-code-submit" name="" />
       
       <Card userName={userName} userType={userType} userPronouns={userPronouns} userMajor={userMajor} userPhone={userPhone} userEmail={userEmail} userURL={userURL} userLocation={userLocation} cardTheme={cardTheme} />
     </>
