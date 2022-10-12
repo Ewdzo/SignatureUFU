@@ -50,6 +50,8 @@ function App() {
         <input type="radio" name="card-theme" id="white-theme" value="white" />
         <label htmlFor="white-theme">White</label>
       </div>
+
+      <input type="image" src="" alt="" />
       
       <Card userName={userName} userType={userType} userPronouns={userPronouns} userMajor={userMajor} userPhone={userPhone} userEmail={userEmail} userURL={userURL} userLocation={userLocation} cardTheme={cardTheme} />
     </>
