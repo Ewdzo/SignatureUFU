@@ -38,9 +38,12 @@ function App() {
     if (!qrCode) {
       return;
     }
+
     QrScanner.scanImage(qrCode, { returnDetailedScanResult: true })
-      .then(result => console.log(result))
-      .catch(e => console.log('No QR code found.'));
+    .then(result => result.data.slice(-14))
+    .then(result => console.log(result))
+    .catch(e => console.log('No QR code found.'));
+    
   };
 
 
