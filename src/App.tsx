@@ -1,3 +1,4 @@
+import axios from 'axios';
 import html2canvas from 'html2canvas';
 import QrScanner from 'qr-scanner';
 import { useEffect, useState } from 'react';
@@ -41,9 +42,16 @@ function App() {
 
     QrScanner.scanImage(qrCode, { returnDetailedScanResult: true })
     .then(result => result.data.slice(-14))
-    .then(result => console.log(result))
+    .then(result => 
+      axios.get(`https://www.sistemas.ufu.br/valida-gateway/id-digital/buscarDadosIdDigital?idIdentidade=${result}`) 
+      .then(function (response) {
+        console.log(response.data.identidadeDigital);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+    )
     .catch(e => console.log('No QR code found.'));
-    
   };
 
 
