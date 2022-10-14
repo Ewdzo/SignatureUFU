@@ -79,13 +79,26 @@ function App() {
   
   return (
     <>
-      <div className="container" id='user-type-picker' >
-        <button>Aluno</button>
-        <button>Professor</button>
-        <button>Outro</button>
+      <div className="info-card" id='user-type-picker'>
+        <input type="radio" name="user-type" id="student-type" value="student" /><label htmlFor="student-type">Aluno</label>
+        <input type="radio" name="user-type" id="teacher-type" value="teacher" /><label htmlFor="teacher-type">Professor</label>
+        <input type="radio" name="user-type" id="other-type" value="other" /><label htmlFor="other-type">Outro</label>
       </div>
 
-      <div className="container" id='card-theme-picker' >
+      <div className="info-card" id='user-pronouns-picker'>
+        <input type="radio" name="user-gender" id="male-gender" value="male" /><label htmlFor="male-gender">Masculino</label>
+        <input type="radio" name="user-gender" id="female-gender" value="female" /><label htmlFor="female-gender">Feminino</label>
+        <input type="radio" name="user-gender" id="other-gender" value="other" /><label htmlFor="other-gender">Neutro / Outro</label>
+      </div>
+
+      <div className="info-card" id='user-contact'>
+        <input type="text" name="user-email" id="user-email" placeholder='Ex: aluno@ufu.br' /> 
+        <input type="text" name="user-phone" id="user-phone" placeholder='Ex: (34) 3810-1010' /> 
+        <input type="radio" name="user-location" id="araras-campus" value="araras" /><label htmlFor="araras-campus">Monte Carmelo - Araras</label>
+        <input type="radio" name="user-location" id="boa-vista-campus" value="boa vista" /><label htmlFor="boa-vista-campus">Monte Carmelo - Boa Vista</label>
+      </div>
+
+      <div className="info-card" id='card-theme-picker' >
         <input type="radio" name="card-theme" id="blue-theme" value="blue" />
         <label htmlFor="blue-theme">Blue</label>
         <input type="radio" name="card-theme" id="white-theme" value="white" />
