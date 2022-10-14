@@ -6,14 +6,14 @@ import './App.css'
 import { Card } from './components/card';
 
 function App() {
-  const userName = "Enzo Weder";
-  const userType = "Alun"
-  const userPronouns = "o/a/e";
-  const userMajor = "Sistemas de Informação";
-  const userPhone = "(85) 99421-6158";
-  const userEmail = "enzoweder@ufu.br"
-  const userURL = "www.ufu.com.br"
-  const userLocation = "UFU - Monte Carmelo - Unidade Araras"
+  const [userName, setUserName] = useState();
+  const [userType, setUserType] = useState();
+  const [userPronouns, setUserPronouns] = useState();
+  const [userMajor, setUserMajor] = useState();
+  const [userPhone, setUserPhone] = useState();;
+  const [userEmail, setUserEmail] = useState();
+  const [userURL, setUserURL] = useState();
+  const [userLocation, setUserLocation] = useState();
   const [cardTheme, setCardTheme] = useState("blue" as string);
 
 
