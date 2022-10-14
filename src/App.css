@@ -34,6 +34,7 @@ body {
     position: absolute;
     right: 28.5%;
     top: 24%;
+    min-width: 460px;
 }
 
 #userInfo > tbody > tr > td {
