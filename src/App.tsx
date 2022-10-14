@@ -44,8 +44,13 @@ function App() {
     .then(result => result.data.slice(-14))
     .then(result => 
       axios.get(`https://www.sistemas.ufu.br/valida-gateway/id-digital/buscarDadosIdDigital?idIdentidade=${result}`) 
-      .then(function (response) {
-        console.log(response.data.identidadeDigital);
+      .then(response => response.data.identidadeDigital)
+      .then((response) => {
+        const fullName = response.nome.split(" ");
+        const nameSurname = fullName[0] + " " + fullName[1];
+        setUserName(nameSurname as any);
+
+        
       })
       .catch(function (error) {
         console.log(error);
