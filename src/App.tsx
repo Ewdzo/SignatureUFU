@@ -48,9 +48,10 @@ function App() {
       .then((response) => {
         const fullName = response.nome.split(" ");
         const nameSurname = fullName[0] + " " + fullName[1];
-        setUserName(nameSurname as any);
-
+        setUserName(nameSurname as any);  
         
+        if(response.vinculo == "aluno") { setUserType("Alun" as any) }
+        else if(response.vinculo) { setUserType("Professor" as any) }
       })
       .catch(function (error) {
         console.log(error);
