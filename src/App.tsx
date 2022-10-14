@@ -50,7 +50,14 @@ function App() {
         const nameSurname = fullName[0] + " " + fullName[1];
         setUserName(nameSurname as any);  
         
-        if(response.vinculo == "aluno") { setUserType("Alun" as any) }
+        if(response.vinculo == "aluno") { 
+          setUserType("Alun" as any) 
+
+          const userMajorFull = response.informacao.split(" ");
+          const userMajorGraduation = userMajorFull[2] + " " + userMajorFull[3] + " " + userMajorFull[4].replace(":", "");
+          setUserMajor(userMajorGraduation as any);
+        }
+        
         else if(response.vinculo) { setUserType("Professor" as any) }
       })
       .catch(function (error) {
