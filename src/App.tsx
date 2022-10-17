@@ -6,14 +6,14 @@ import './App.css'
 import { Card } from './components/card';
 
 function App() {
-  const [userName, setUserName] = useState();
-  const [userType, setUserType] = useState();
-  const [userPronouns, setUserPronouns] = useState();
-  const [userMajor, setUserMajor] = useState();
-  const [userPhone, setUserPhone] = useState();;
-  const [userEmail, setUserEmail] = useState();
-  const [userURL, setUserURL] = useState();
-  const [userLocation, setUserLocation] = useState();
+  const [userName, setUserName] = useState(String);
+  const [userType, setUserType] = useState(String);
+  const [userPronouns, setUserPronouns] = useState(String);
+  const [userMajor, setUserMajor] = useState(String);
+  const [userPhone, setUserPhone] = useState(String);;
+  const [userEmail, setUserEmail] = useState(String);
+  const [userURL, setUserURL] = useState(String);
+  const [userLocation, setUserLocation] = useState(String);
   const [cardTheme, setCardTheme] = useState("blue" as string);
 
 
@@ -22,7 +22,7 @@ function App() {
     const checkedTheme = (document.querySelector('input[name="card-theme"]:checked') as HTMLInputElement).value ;
     
     if(checkedTheme && checkedTheme != null) {
-      setCardTheme(checkedTheme as any);
+      setCardTheme(checkedTheme);
     }
   }
 
@@ -48,17 +48,17 @@ function App() {
       .then((response) => {
         const fullName = response.nome.split(" ");
         const nameSurname = fullName[0] + " " + fullName[1];
-        setUserName(nameSurname as any);  
+        setUserName(nameSurname);  
         
         if(response.vinculo == "aluno") { 
-          setUserType("Alun" as any) 
+          setUserType("Alun") 
 
           const userMajorFull = response.informacao.split(" ");
           const userMajorGraduation = userMajorFull[2] + " " + userMajorFull[3] + " " + userMajorFull[4].replace(":", "");
-          setUserMajor(userMajorGraduation as any);
+          setUserMajor(userMajorGraduation);
         }
         
-        else if(response.vinculo) { setUserType("Professor" as any) }
+        else if(response.vinculo) { setUserType("Professor") }
       })
       .catch(function (error) {
         console.log(error);
