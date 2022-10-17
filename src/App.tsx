@@ -18,22 +18,20 @@ function App() {
 
 
   const setCard = () => {
-
     const checkedTheme = (document.querySelector('input[name="card-theme"]:checked') as HTMLInputElement).value ;
     
-    if(checkedTheme && checkedTheme != null) {
+    if(checkedTheme != null) {
       setCardTheme(checkedTheme);
     }
-  }
+  };
 
   const printCard = () => {
     html2canvas((document.querySelector("#card") as HTMLElement), {scale: 2}).then(canvas => {
       document.body.appendChild(canvas)
     });
-  }
+  };
 
   const scanQR = () => {
-
     const qrCodeSubmit = document.getElementById("qr-code-submit") as HTMLInputElement;
     const qrCode = qrCodeSubmit.files![0];
     if (!qrCode) {
@@ -57,8 +55,7 @@ function App() {
           const userMajorGraduation = userMajorFull[2] + " " + userMajorFull[3] + " " + userMajorFull[4].replace(":", "");
           setUserMajor(userMajorGraduation);
         }
-        
-        else if(response.vinculo) { setUserType("Professor") }
+        else{ setUserType("Professor") }
       })
       .catch(function (error) {
         console.log(error);
@@ -67,14 +64,31 @@ function App() {
     .catch(e => console.log('No QR code found.'));
   };
 
+  const fillUserInfo = () => {
+    const checkedPronouns = (document.querySelector('input[name="user-gender"]:checked') as HTMLInputElement).value;
+    const inputEmail = (document.querySelector('input[name="user-email"]') as HTMLInputElement).value;
+    const inputPhone = (document.querySelector('input[name="user-phone"]') as HTMLInputElement).value;
+    const checkedLocation = (document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value;
+        
+    if(checkedPronouns != null && userType != "Other") {
+      setUserPronouns(checkedPronouns);
+      setUserEmail(inputEmail);
+      setUserPhone(inputPhone);
+      setUserLocation(checkedLocation);
+      setUserURL("www.ufu.com.br")
+    };
+  };
 
   useEffect(() => {
     const cardThemePickers = document.querySelectorAll('input[name="card-theme"]');
     cardThemePickers.forEach( element => element.addEventListener('click', setCard) )
 
     const submitButton = document.getElementById("submit-button");
-    (submitButton as HTMLInputElement).onclick = () => {scanQR()}
-  })
+    (submitButton as HTMLInputElement).onclick = () => {
+      scanQR();
+      fillUserInfo();
+    }
+  });
 
   
   return (
@@ -86,16 +100,16 @@ function App() {
       </div>
 
       <div className="info-card" id='user-pronouns-picker'>
-        <input type="radio" name="user-gender" id="male-gender" value="male" /><label htmlFor="male-gender">Masculino</label>
-        <input type="radio" name="user-gender" id="female-gender" value="female" /><label htmlFor="female-gender">Feminino</label>
-        <input type="radio" name="user-gender" id="other-gender" value="other" /><label htmlFor="other-gender">Neutro / Outro</label>
+        <input type="radio" name="user-gender" id="male-gender" value="o" /><label htmlFor="male-gender">Masculino</label>
+        <input type="radio" name="user-gender" id="female-gender" value="a" /><label htmlFor="female-gender">Feminino</label>
+        <input type="radio" name="user-gender" id="other-gender" value="e" /><label htmlFor="other-gender">Neutro / Outro</label>
       </div>
 
       <div className="info-card" id='user-contact'>
         <input type="text" name="user-email" id="user-email" placeholder='Ex: aluno@ufu.br' /> 
         <input type="text" name="user-phone" id="user-phone" placeholder='Ex: (34) 3810-1010' /> 
-        <input type="radio" name="user-location" id="araras-campus" value="araras" /><label htmlFor="araras-campus">Monte Carmelo - Araras</label>
-        <input type="radio" name="user-location" id="boa-vista-campus" value="boa vista" /><label htmlFor="boa-vista-campus">Monte Carmelo - Boa Vista</label>
+        <input type="radio" name="user-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus">Monte Carmelo - Araras</label>
+        <input type="radio" name="user-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus">Monte Carmelo - Boa Vista</label>
       </div>
 
       <div className="info-card" id='card-theme-picker' >
