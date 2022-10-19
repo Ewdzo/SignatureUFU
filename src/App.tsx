@@ -26,9 +26,14 @@ function App() {
   };
 
   const printCard = () => {
+
+    (document.getElementById("card") as HTMLElement).style.display = 'flex'  
+
     html2canvas((document.querySelector("#card") as HTMLElement), {scale: 2}).then(canvas => {
       document.body.appendChild(canvas)
     });
+
+    (document.getElementById("card") as HTMLElement).style.display = 'none' 
   };
 
   const scanQR = () => {
@@ -88,39 +93,46 @@ function App() {
       scanQR();
       fillUserInfo();
     }
+
+    const printButton = document.getElementById("print-button");
+    (printButton as HTMLInputElement).onclick = () => { printCard() };
+
+    (document.getElementById("card") as HTMLElement).style.display = 'none' 
+
   });
 
-  
+
   return (
     <>
-      <div className="info-card" id='user-type-picker'>
-        <input type="radio" name="user-type" id="student-type" value="student" /><label htmlFor="student-type">Aluno</label>
-        <input type="radio" name="user-type" id="teacher-type" value="teacher" /><label htmlFor="teacher-type">Professor</label>
-        <input type="radio" name="user-type" id="other-type" value="other" /><label htmlFor="other-type">Outro</label>
+      <div id='user-type-picker'>
+        <input className="info-card" type="radio" name="user-type" id="student-type" value="student" /><label htmlFor="student-type">Aluno</label>
+        <input className="info-card" type="radio" name="user-type" id="teacher-type" value="teacher" /><label htmlFor="teacher-type">Professor</label>
+        <input className="info-card" type="radio" name="user-type" id="other-type" value="other" /><label htmlFor="other-type">Outro</label>
       </div>
 
-      <div className="info-card" id='user-pronouns-picker'>
-        <input type="radio" name="user-gender" id="male-gender" value="o" /><label htmlFor="male-gender">Masculino</label>
-        <input type="radio" name="user-gender" id="female-gender" value="a" /><label htmlFor="female-gender">Feminino</label>
-        <input type="radio" name="user-gender" id="other-gender" value="e" /><label htmlFor="other-gender">Neutro / Outro</label>
+      <div id='user-pronouns-picker'>
+        <input className="info-card" type="radio" name="user-gender" id="male-gender" value="o" /><label htmlFor="male-gender">Masculino</label>
+        <input className="info-card" type="radio" name="user-gender" id="female-gender" value="a" /><label htmlFor="female-gender">Feminino</label>
+        <input className="info-card" type="radio" name="user-gender" id="other-gender" value="e" /><label htmlFor="other-gender">Neutro / Outro</label>
       </div>
 
-      <div className="info-card" id='user-contact'>
-        <input type="text" name="user-email" id="user-email" placeholder='Ex: aluno@ufu.br' /> 
-        <input type="text" name="user-phone" id="user-phone" placeholder='Ex: (34) 3810-1010' /> 
-        <input type="radio" name="user-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus">Monte Carmelo - Araras</label>
-        <input type="radio" name="user-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus">Monte Carmelo - Boa Vista</label>
+      <div id='user-contact'>
+        <input type="email" name="user-email" id="user-email" placeholder='Ex: aluno@ufu.br' /> 
+        <input type="tel" name="user-phone" id="user-phone" placeholder='Ex: (34) 3810-1010' /> 
+        <input className="info-card" type="radio" name="user-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus">Monte Carmelo - Araras</label>
+        <input className="info-card" type="radio" name="user-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus">Monte Carmelo - Boa Vista</label>
       </div>
 
-      <div className="info-card" id='card-theme-picker' >
-        <input type="radio" name="card-theme" id="blue-theme" value="blue" />
+      <div id='card-theme-picker' >
+        <input className="info-card" type="radio" name="card-theme" id="blue-theme" value="blue" />
         <label htmlFor="blue-theme">Blue</label>
-        <input type="radio" name="card-theme" id="white-theme" value="white" />
+        <input className="info-card" type="radio" name="card-theme" id="white-theme" value="white" />
         <label htmlFor="white-theme">White</label>
       </div>
 
       <input type="file" id="qr-code-submit" name="" />
       <input type="button" value="submit" id='submit-button'/>
+      <input type="button" value="print" id="print-button" />
   
       
       <Card userName={userName} userType={userType} userPronouns={userPronouns} userMajor={userMajor} userPhone={userPhone} userEmail={userEmail} userURL={userURL} userLocation={userLocation} cardTheme={cardTheme} />
