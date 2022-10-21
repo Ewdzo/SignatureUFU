@@ -96,6 +96,6 @@ body {
     border-radius: 2%;
 }
 
-.info-card > label > img {
+.info-card > label > img, .info-type-container > img {
     height: 100px;
 }

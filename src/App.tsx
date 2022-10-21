@@ -116,8 +116,8 @@ function App() {
       </div>
 
       <div className='info-input-container'>
-        <input type="email" name="user-email" id="user-email" placeholder='Ex: aluno@ufu.br' /> 
-        <input type="tel" name="user-phone" id="user-phone" placeholder='Ex: (34) 3810-1010' />
+        <div className='info-type-container'><img src="./src/imgs/envelope-fill.svg" alt="" /><input type="email" name="user-email" id="user-email" placeholder='Ex: aluno@ufu.br' /></div>
+        <div className='info-type-container'><img src="./src/imgs/whatsapp-logo-fill.svg" alt="" /><input type="tel" name="user-phone" id="user-phone" placeholder='Ex: (34) 3810-1010' /></div>
       </div>
       
       <div className='info-input-container'>
