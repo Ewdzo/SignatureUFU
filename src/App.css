@@ -95,3 +95,7 @@ body {
     padding: 10px;
     border-radius: 2%;
 }
+
+.info-card > label > img {
+    height: 100px;
+}

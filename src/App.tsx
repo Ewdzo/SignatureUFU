@@ -105,8 +105,8 @@ function App() {
   return (
     <>
       <div id='user-type-picker' className='info-input-container'>
-        <div className="info-card"><input type="radio" name="user-type" id="student-teacher-type" value="student-teacher" /><label htmlFor="student-teacher-type">Aluno / Professor</label></div>
-        <div className="info-card"><input type="radio" name="user-type" id="other-type" value="other" /><label htmlFor="other-type">Outro</label></div>
+        <div className="info-card"><input type="radio" name="user-type" id="student-teacher-type" value="student-teacher" /><label htmlFor="student-teacher-type"><img src="./src/imgs/student-fill.svg" alt="" /></label></div>
+        <div className="info-card"><input type="radio" name="user-type" id="other-type" value="other" /><label htmlFor="other-type"><img src="./src/imgs/user-gear-fill.svg" alt="" /></label></div>
       </div>
 
       <div id='user-pronouns-picker' className='info-input-container'>
