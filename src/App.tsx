@@ -118,8 +118,11 @@ function App() {
       <div id='user-contact'>
         <input type="email" name="user-email" id="user-email" placeholder='Ex: aluno@ufu.br' /> 
         <input type="tel" name="user-phone" id="user-phone" placeholder='Ex: (34) 3810-1010' /> 
-        <div className="info-card"><input type="radio" name="user-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus">Monte Carmelo - Araras</label></div>
-        <div className="info-card"><input type="radio" name="user-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus">Monte Carmelo - Boa Vista</label></div>
+        <div className='picker-container'>
+          <div className="info-card"><input type="radio" name="user-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus">Monte Carmelo - Araras</label></div>
+          <div className="info-card"><input type="radio" name="user-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus">Monte Carmelo - Boa Vista</label></div>
+        </div>
+        
       </div>
 
       <div id='card-theme-picker' className='picker-container'>
