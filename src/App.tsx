@@ -105,8 +105,7 @@ function App() {
   return (
     <>
       <div id='user-type-picker'>
-        <input className="info-card" type="radio" name="user-type" id="student-type" value="student" /><label htmlFor="student-type">Aluno</label>
-        <input className="info-card" type="radio" name="user-type" id="teacher-type" value="teacher" /><label htmlFor="teacher-type">Professor</label>
+        <input className="info-card" type="radio" name="user-type" id="student-teacher-type" value="student-teacher" /><label htmlFor="student-teacher-type">Aluno / Professor</label>
         <input className="info-card" type="radio" name="user-type" id="other-type" value="other" /><label htmlFor="other-type">Outro</label>
       </div>
 
