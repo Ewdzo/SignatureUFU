@@ -104,28 +104,28 @@ function App() {
 
   return (
     <>
-      <div id='user-type-picker' className='picker-container'>
+      <div id='user-type-picker' className='info-input-container'>
         <div className="info-card"><input type="radio" name="user-type" id="student-teacher-type" value="student-teacher" /><label htmlFor="student-teacher-type">Aluno / Professor</label></div>
         <div className="info-card"><input type="radio" name="user-type" id="other-type" value="other" /><label htmlFor="other-type">Outro</label></div>
       </div>
 
-      <div id='user-pronouns-picker' className='picker-container'>
+      <div id='user-pronouns-picker' className='info-input-container'>
         <div className="info-card"><input type="radio" name="user-gender" id="male-gender" value="o" /><label htmlFor="male-gender">Masculino</label></div>
         <div className="info-card"><input type="radio" name="user-gender" id="female-gender" value="a" /><label htmlFor="female-gender">Feminino</label></div>
         <div className="info-card"><input type="radio" name="user-gender" id="other-gender" value="e" /><label htmlFor="other-gender">Neutro / Outro</label></div>
       </div>
 
-      <div className='type-container'>
+      <div className='info-input-container'>
         <input type="email" name="user-email" id="user-email" placeholder='Ex: aluno@ufu.br' /> 
         <input type="tel" name="user-phone" id="user-phone" placeholder='Ex: (34) 3810-1010' />
       </div>
       
-      <div className='picker-container'>
+      <div className='info-input-container'>
         <div className="info-card"><input type="radio" name="user-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus">Monte Carmelo - Araras</label></div>
         <div className="info-card"><input type="radio" name="user-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus">Monte Carmelo - Boa Vista</label></div>
       </div>
 
-      <div id='card-theme-picker' className='picker-container'>
+      <div id='card-theme-picker' className='info-input-container'>
         <div className="info-card"><input type="radio" name="card-theme" id="blue-theme" value="blue" /><label htmlFor="blue-theme">Blue</label></div>
         <div className="info-card"><input type="radio" name="card-theme" id="white-theme" value="white" /><label htmlFor="white-theme">White</label></div>
       </div>
