@@ -110,9 +110,9 @@ function App() {
       </div>
 
       <div id='user-pronouns-picker' className='info-input-container'>
-        <div className="info-card"><input type="radio" name="user-gender" id="male-gender" value="o" /><label htmlFor="male-gender">Masculino</label></div>
-        <div className="info-card"><input type="radio" name="user-gender" id="female-gender" value="a" /><label htmlFor="female-gender">Feminino</label></div>
-        <div className="info-card"><input type="radio" name="user-gender" id="other-gender" value="e" /><label htmlFor="other-gender">Neutro / Outro</label></div>
+        <div className="info-card"><input type="radio" name="user-gender" id="male-gender" value="o" /><label htmlFor="male-gender"><img src="./src/imgs/gender-male.svg" alt="" /></label></div>
+        <div className="info-card"><input type="radio" name="user-gender" id="female-gender" value="a" /><label htmlFor="female-gender"><img src="./src/imgs/gender-female.svg" alt="" /></label></div>
+        <div className="info-card"><input type="radio" name="user-gender" id="other-gender" value="e" /><label htmlFor="other-gender"><img src="./src/imgs/gender-non-binary.svg" alt="" /></label></div>
       </div>
 
       <div className='info-input-container'>
