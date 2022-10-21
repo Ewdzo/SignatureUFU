@@ -88,8 +88,8 @@ function App() {
     const cardThemePickers = document.querySelectorAll('input[name="card-theme"]');
     cardThemePickers.forEach( element => element.addEventListener('click', setCard) )
 
-    const submitButton = document.getElementById("submit-button");
-    (submitButton as HTMLInputElement).onclick = () => {
+    const qrInput = document.getElementById("qr-code-submit");
+    (qrInput as HTMLInputElement).onchange = () => {
       scanQR();
       fillUserInfo();
     }
@@ -131,7 +131,6 @@ function App() {
       </div>
 
       <input type="file" id="qr-code-submit" name="" />
-      <input type="button" value="submit" id='submit-button'/>
       <input type="button" value="print" id="print-button" />
   
       
