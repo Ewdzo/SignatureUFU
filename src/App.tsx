@@ -74,12 +74,13 @@ function App() {
     const inputEmail = (document.querySelector('input[name="user-email"]') as HTMLInputElement).value;
     const inputPhone = (document.querySelector('input[name="user-phone"]') as HTMLInputElement).value;
     const checkedLocation = (document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value;
+    const teacherRoom = (document.querySelector('#teacher-room') as HTMLInputElement).value;
         
     if(checkedPronouns != null && userType != "Other") {
       setUserPronouns(checkedPronouns);
       setUserEmail(inputEmail);
       setUserPhone(inputPhone);
-      setUserLocation(checkedLocation);
+      setUserLocation(checkedLocation + "" + teacherRoom);
       setUserURL("www.ufu.com.br")
     };
   };
@@ -123,6 +124,12 @@ function App() {
       <div className='info-input-container'>
         <div className="info-card"><input type="radio" name="user-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus">Monte Carmelo - Araras</label></div>
         <div className="info-card"><input type="radio" name="user-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus">Monte Carmelo - Boa Vista</label></div>
+      </div>
+
+      <div className='info-input-container'>
+        <div className="info-card"><input type="radio" name="teacher-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus">Monte Carmelo - Araras</label></div>
+        <div className="info-card"><input type="radio" name="teach-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus">Monte Carmelo - Boa Vista</label></div>
+        <div className="info-card"><input type="text" id="teacher-room" placeholder='Ex: A201' /></div>
       </div>
 
       <div id='card-theme-picker' className='info-input-container'>
