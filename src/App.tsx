@@ -83,10 +83,9 @@ function App() {
       setUserType("Alun") 
       setUserPronouns(checkedPronouns);
       setUserLocation(checkedLocation);
-      setUserURL("www.ufu.com.br")
     }
     else if(type == "docente"){
-      const teacherLocation = (document.querySelector('input[name="teacher-location"]:checked') as HTMLInputElement).value + " - " + (document.querySelector('input[name="teacher-room"]') as HTMLInputElement).value
+      const teacherLocation = (document.querySelector('input[name="teacher-room"]') as HTMLInputElement).value + " - " + (document.querySelector('input[name="teacher-location"]:checked') as HTMLInputElement).value;
       
       if(checkedPronouns == "o"){
         setUserPronouns("")
@@ -101,6 +100,7 @@ function App() {
 
     setUserEmail(inputEmail);
     setUserPhone(inputPhone);
+    setUserURL("www.ufu.com.br");
   };
 
   useEffect(() => {
