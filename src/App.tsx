@@ -43,41 +43,64 @@ function App() {
       return;
     }
 
-    const qrData = QrScanner.scanImage(qrCode, { returnDetailedScanResult: true })
+    QrScanner.scanImage(qrCode, { returnDetailedScanResult: true })
     .then(result => result.data.slice(-14))
     .then(result => 
       axios.get(`https://www.sistemas.ufu.br/valida-gateway/id-digital/buscarDadosIdDigital?idIdentidade=${result}`) 
       .then(response => response.data.identidadeDigital)
       .then((response) => {
-        setUserType(response.vinculo)
         fillUserInfo(response.vinculo);
+
+        const fullName = response.nome.split(" ");
+        const nameSurname = fullName[0] + " " + fullName[1];
+        setUserName(nameSurname);  
+
+        if(response.vinculo == "aluno"){
+          const userMajorFull = response.informacao.split(" ");
+          const userMajorGraduation = userMajorFull[2] + " " + userMajorFull[3] + " " + userMajorFull[4].replace(":", "");
+          setUserMajor(userMajorGraduation);
+        }
+
       })
       .catch(function (error) {
-        return(error);
+        console.log(error);
       })
     )
     .catch(e => console.log('No QR code found.'));
-
-
   };
+
+
 
   const fillUserInfo = (type: string) => {
     
     const checkedPronouns = (document.querySelector('input[name="user-gender"]:checked') as HTMLInputElement).value;
     const inputEmail = (document.querySelector('input[name="user-email"]') as HTMLInputElement).value;
     const inputPhone = (document.querySelector('input[name="user-phone"]') as HTMLInputElement).value;
-    const checkedLocation = (document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value;
-    // const teacherRoom = (document.querySelector('input[name="teacher-location"]:checked') as HTMLInputElement).value;
-
-    console.log(userType)
 
     if(type == "aluno") {
+      const checkedLocation = (document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value;
+
+      setUserType("Alun") 
       setUserPronouns(checkedPronouns);
-      setUserEmail(inputEmail);
-      setUserPhone(inputPhone);
       setUserLocation(checkedLocation);
       setUserURL("www.ufu.com.br")
-    };
+    }
+    else if(type == "docente"){
+      const teacherLocation = (document.querySelector('input[name="teacher-location"]:checked') as HTMLInputElement).value + " - " + (document.querySelector('input[name="teacher-room"]') as HTMLInputElement).value
+      
+      if(checkedPronouns == "o"){
+        setUserPronouns("")
+      } 
+      else {
+        setUserPronouns(checkedPronouns)
+      };
+
+      setUserType("Professor") 
+      setUserLocation(teacherLocation);
+    }
+
+    setUserEmail(inputEmail);
+    setUserPhone(inputPhone);
   };
 
   useEffect(() => {
@@ -121,9 +144,9 @@ function App() {
       </div>
 
       <div className='info-input-container'>
-        <div className="info-card"><input type="radio" name="teacher-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus">Monte Carmelo - Araras</label></div>
-        <div className="info-card"><input type="radio" name="teacher-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus">Monte Carmelo - Boa Vista</label></div>
-        <div className="info-card"><input type="text" id="teacher-room" placeholder='Ex: A201' /></div>
+        <div className="info-card"><input type="radio" name="teacher-location" id="araras-campus-teacher" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus-teacher">Monte Carmelo - Araras</label></div>
+        <div className="info-card"><input type="radio" name="teacher-location" id="boa-vista-campus-teacher" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus-teacher">Monte Carmelo - Boa Vista</label></div>
+        <div className="info-card"><input type="text" name="teacher-room" placeholder='Ex: A201' /></div>
       </div>
 
       <div id='card-theme-picker' className='info-input-container'>
