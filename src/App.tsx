@@ -25,7 +25,7 @@ function App() {
     }
   };
 
-  const  printCard = async () => {
+  const printCard = async () => {
 
     fillUserInfo(userType);
 
@@ -90,6 +90,7 @@ function App() {
     }
     else if(type == "docente"){
       const teacherLocation = (document.querySelector('input[name="teacher-room"]') as HTMLInputElement).value + " - " + (document.querySelector('input[name="teacher-location"]:checked') as HTMLInputElement).value;
+      const teacherFaculty = (document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement).value;
       
       if(checkedPronouns == "o"){
         setUserPronouns("")
@@ -100,6 +101,7 @@ function App() {
 
       setUserType("Professor") 
       setUserLocation(teacherLocation);
+      setUserMajor(teacherFaculty)
     }
 
     setUserEmail(inputEmail);
@@ -135,6 +137,9 @@ function App() {
         <input type="file" id="qr-code-submit" name="" />
       </div>
       
+      <div className='info-input-container'>
+        <div className='info-type-container'><img src="./src/imgs/identification-card-fill.svg" alt="" /><input type="text" name="teacher-faculty" id="teacher-faculty" placeholder='Ex: FACOM' /></div>
+      </div>
 
       <div id='user-pronouns-picker' className='info-input-container'>
         <div className="info-card"><input type="radio" name="user-gender" id="male-gender" value="o" /><label htmlFor="male-gender"><img src="./src/imgs/gender-male.svg" alt="" /></label></div>
