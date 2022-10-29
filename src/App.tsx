@@ -25,7 +25,11 @@ function App() {
     }
   };
 
-  const printCard = () => {
+  const  printCard = async () => {
+
+    fillUserInfo(userType);
+
+    await new Promise(r => setTimeout(r, 1000));
 
     (document.getElementById("card") as HTMLElement).style.display = 'flex'  
 
@@ -49,7 +53,7 @@ function App() {
       axios.get(`https://www.sistemas.ufu.br/valida-gateway/id-digital/buscarDadosIdDigital?idIdentidade=${result}`) 
       .then(response => response.data.identidadeDigital)
       .then((response) => {
-        fillUserInfo(response.vinculo);
+        setUserType(response.vinculo);
 
         const fullName = response.nome.split(" ");
         const nameSurname = fullName[0] + " " + fullName[1];
@@ -127,6 +131,11 @@ function App() {
         <div className="info-card"><input type="radio" name="user-type" id="other-type" value="other" /><label htmlFor="other-type"><img src="./src/imgs/user-gear-fill.svg" alt="" /></label></div>
       </div>
 
+      <div className='info-input-container'>
+        <input type="file" id="qr-code-submit" name="" />
+      </div>
+      
+
       <div id='user-pronouns-picker' className='info-input-container'>
         <div className="info-card"><input type="radio" name="user-gender" id="male-gender" value="o" /><label htmlFor="male-gender"><img src="./src/imgs/gender-male.svg" alt="" /></label></div>
         <div className="info-card"><input type="radio" name="user-gender" id="female-gender" value="a" /><label htmlFor="female-gender"><img src="./src/imgs/gender-female.svg" alt="" /></label></div>
@@ -154,7 +163,7 @@ function App() {
         <div className="info-card"><input type="radio" name="card-theme" id="white-theme" value="white" /><label htmlFor="white-theme">White</label></div>
       </div>
 
-      <input type="file" id="qr-code-submit" name="" />
+      
       <input type="button" value="print" id="print-button" />
   
       
