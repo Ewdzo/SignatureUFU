@@ -14,6 +14,54 @@ body {
     align-items: center;
 }
 
+#main-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-card {
+    width: 40%;
+    min-height: 80%;
+    margin: 5%;
+    border: solid red 1px;
+}
+
+.info-input-container {
+    min-height: 500px;
+    width: 80%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: solid black 1px;
+    padding: 10px;
+    border-radius: 2%;
+
+    position: relative;
+}
+
+.info-card > label > img, .info-type-container > img {
+    height: 100px;
+}
+
+
+#page-button {
+    position: absolute;
+    bottom: 0;
+}
+
+#page-button > button {
+    border: 0;
+    background: none;
+}
+
+#page-button > button > img {
+    height: 35px;
+}
+
 #card {
     font-family: 'Arimo', sans-serif;
     height: 600px;
@@ -74,28 +122,4 @@ body {
 
 #userInfo > tbody > tr > td > h2, #universityInfo > tbody > tr > td > h4 {
     font-weight: 100;
-}
-
-.info-card {
-    width: 40%;
-    min-height: 80%;
-    margin: 5%;
-    border: solid red 1px;
-}
-
-.info-input-container {
-    min-height: 500px;
-    width: 80%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border: solid black 1px;
-    padding: 10px;
-    border-radius: 2%;
-}
-
-.info-card > label > img, .info-type-container > img {
-    height: 100px;
 }
