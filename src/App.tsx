@@ -4,7 +4,7 @@ import QrScanner from 'qr-scanner';
 import { useEffect, useState } from 'react';
 import './App.css'
 import { Card } from './components/card';
-import { InfoInput } from './components/usertype';
+import { InfoInput } from './components/infoCard';
 
 function App() {
   const [userName, setUserName] = useState(String);
