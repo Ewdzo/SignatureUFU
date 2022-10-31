@@ -28,25 +28,9 @@ body {
     border: solid red 1px;
 }
 
-.info-input-container {
-    min-height: 500px;
-    width: 80%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border: solid black 1px;
-    padding: 10px;
-    border-radius: 2%;
-
-    position: relative;
-}
-
 .info-card > label > img, .info-type-container > img {
     height: 100px;
 }
-
 
 #page-button {
     position: absolute;
