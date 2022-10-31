@@ -4,6 +4,7 @@ import QrScanner from 'qr-scanner';
 import { useEffect, useState } from 'react';
 import './App.css'
 import { Card } from './components/card';
+import { TypePicker } from './components/usertype';
 
 function App() {
   const [userName, setUserName] = useState(String);
@@ -15,7 +16,6 @@ function App() {
   const [userURL, setUserURL] = useState(String);
   const [userLocation, setUserLocation] = useState(String);
   const [cardTheme, setCardTheme] = useState("blue" as string);
-
 
   const setCard = () => {
     const checkedTheme = (document.querySelector('input[name="card-theme"]:checked') as HTMLInputElement).value ;
@@ -73,8 +73,6 @@ function App() {
     .catch(e => console.log('No QR code found.'));
   };
 
-
-
   const fillUserInfo = (type: string) => {
     
     const checkedPronouns = (document.querySelector('input[name="user-gender"]:checked') as HTMLInputElement).value;
@@ -122,7 +120,13 @@ function App() {
     const printButton = document.getElementById("print-button");
     (printButton as HTMLInputElement).onclick = () => { printCard() };
 
-    (document.getElementById("card") as HTMLElement).style.display = '' 
+    (document.getElementById("card") as HTMLElement).style.display = 'none' 
+
+    // const previousPageButton = document.querySelectorAll('#previous-page');
+    // previousPageButton.forEach( element => element.addEventListener('click', ) )
+    
+    // const nextPageButton = document.querySelectorAll('#next-page');
+    // nextPageButton.forEach( element => element.addEventListener('click', ) )
 
   });
 
@@ -130,6 +134,7 @@ function App() {
   return (
     <>
       <div id='main-container'>
+        <TypePicker />
         <div id='user-type-picker' className='info-input-container'>
           <div className="info-card"><input type="radio" name="user-type" id="student-teacher-type" value="student-teacher" /><label htmlFor="student-teacher-type"><img src="./src/imgs/student-fill.svg" alt="" /></label></div>
           <div className="info-card"><input type="radio" name="user-type" id="other-type" value="other" /><label htmlFor="other-type"><img src="./src/imgs/user-gear-fill.svg" alt="" /></label></div>
