@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const InfoInput = styled.div`
+export const InfoInputContainer = styled.div`
 min-height: 500px;
 width: 80%;
 
