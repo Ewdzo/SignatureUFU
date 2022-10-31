@@ -91,6 +91,7 @@ function App() {
     else if(type == "docente"){
       const teacherLocation = (document.querySelector('input[name="teacher-room"]') as HTMLInputElement).value + " - " + (document.querySelector('input[name="teacher-location"]:checked') as HTMLInputElement).value;
       const teacherFaculty = (document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement).value;
+      setUserType("Professor") 
       
       if(checkedPronouns == "o"){
         setUserPronouns("")
@@ -121,7 +122,7 @@ function App() {
     const printButton = document.getElementById("print-button");
     (printButton as HTMLInputElement).onclick = () => { printCard() };
 
-    (document.getElementById("card") as HTMLElement).style.display = 'none' 
+    (document.getElementById("card") as HTMLElement).style.display = '' 
 
   });
 

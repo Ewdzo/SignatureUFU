@@ -87,9 +87,9 @@ body {
 
 #userInfo {
     position: absolute;
-    right: 28.5%;
+    left: 35%;
     top: 24%;
-    min-width: 460px;
+    min-width: 800px;
 }
 
 #userInfo > tbody > tr > td {
