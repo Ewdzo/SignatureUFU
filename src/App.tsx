@@ -1,7 +1,8 @@
 import axios from 'axios';
 import html2canvas from 'html2canvas';
+import { display } from 'html2canvas/dist/types/css/property-descriptors/display';
 import QrScanner from 'qr-scanner';
-import { useEffect, useState } from 'react';
+import { HtmlHTMLAttributes, useEffect, useState } from 'react';
 import './App.css'
 import { Card } from './components/card';
 import { InfoInputContainer } from './components/infoCard';
@@ -108,6 +109,20 @@ function App() {
     setUserURL("www.ufu.com.br");
   };
 
+  const previousPage = (index: number) => {
+    if(index > 0){
+      (document.querySelector('#main-container')?.childNodes[(index - 1)] as HTMLElement).style.display = 'flex';
+      (document.querySelector('#main-container')?.childNodes[(index)] as HTMLElement).style.display = 'none';
+    }
+  }
+
+  const nextPage = (index: number) => {
+    if(index < (( Number(document.querySelector('#main-container')?.childNodes.length as Number)) - 1) ) {
+      (document.querySelector('#main-container')?.childNodes[(index + 1)] as HTMLElement).style.display = 'flex';
+      (document.querySelector('#main-container')?.childNodes[(index)] as HTMLElement).style.display = 'none';
+    }
+  }
+
   useEffect(() => {
     const cardThemePickers = document.querySelectorAll('input[name="card-theme"]');
     cardThemePickers.forEach( element => element.addEventListener('click', setCard) )
@@ -122,12 +137,13 @@ function App() {
 
     (document.getElementById("card") as HTMLElement).style.display = 'none' 
 
-    // const previousPageButton = document.querySelectorAll('#previous-page');
-    // previousPageButton.forEach( element => element.addEventListener('click', ) )
+    const previousPageButton = document.querySelectorAll('#previous-page');
+    previousPageButton.forEach( (element, index) => {(element as HTMLButtonElement).onclick = () => { previousPage(index);}});
     
-    // const nextPageButton = document.querySelectorAll('#next-page');
-    // nextPageButton.forEach( element => element.addEventListener('click', ) )
+    const nextPageButton = document.querySelectorAll('#next-page');
+    nextPageButton.forEach( (element, index) => {(element as HTMLButtonElement).onclick = () => { nextPage(index);}});
 
+    document.querySelector('#main-container')?.childNodes.forEach( (element: any, index) => { if(index > 0) {element.style.display = "none"; }});
   });
 
 
@@ -188,7 +204,7 @@ function App() {
         </InfoInputContainer>
         
       </div>
-      
+
       <Card userName={userName} userType={userType} userPronouns={userPronouns} userMajor={userMajor} userPhone={userPhone} userEmail={userEmail} userURL={userURL} userLocation={userLocation} cardTheme={cardTheme} />
     </>
 
