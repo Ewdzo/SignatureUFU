@@ -65,6 +65,7 @@ function App() {
           const userMajorGraduation = userMajorFull[2] + " " + userMajorFull[3] + " " + userMajorFull[4].replace(":", "");
           setUserMajor(userMajorGraduation);
         }
+        
 
       })
       .catch(function (error) {
@@ -123,6 +124,8 @@ function App() {
     }
   }
 
+  document.body.onload = () => { document.querySelector('#main-container')?.childNodes.forEach( (element: any, index) => { if(index > 0) {element.style.display = "none"; }}); };
+
   useEffect(() => {
     const cardThemePickers = document.querySelectorAll('input[name="card-theme"]');
     cardThemePickers.forEach( element => element.addEventListener('click', setCard) )
@@ -132,10 +135,10 @@ function App() {
       scanQR();
     }
 
+    (document.getElementById("card") as HTMLElement).style.display = 'none';  
+
     const printButton = document.getElementById("print-button");
     (printButton as HTMLInputElement).onclick = () => { printCard() };
-
-    (document.getElementById("card") as HTMLElement).style.display = 'none' 
 
     const previousPageButton = document.querySelectorAll('#previous-page');
     previousPageButton.forEach( (element, index) => {(element as HTMLButtonElement).onclick = () => { previousPage(index);}});
@@ -143,7 +146,6 @@ function App() {
     const nextPageButton = document.querySelectorAll('#next-page');
     nextPageButton.forEach( (element, index) => {(element as HTMLButtonElement).onclick = () => { nextPage(index);}});
 
-    document.querySelector('#main-container')?.childNodes.forEach( (element: any, index) => { if(index > 0) {element.style.display = "none"; }});
   });
 
 
@@ -161,7 +163,7 @@ function App() {
           <div id='page-button'><button id='previous-page'><img src="./src/imgs/arrow-circle-left-fill.svg" alt="" /></button><button id='next-page'><img src="./src/imgs/arrow-circle-right-fill.svg" alt="" /></button></div>
         </InfoInputContainer>
         
-        <InfoInputContainer>
+        <InfoInputContainer id='teacher-faculty-container'>
           <div className='info-type-container'><img src="./src/imgs/identification-card-fill.svg" alt="" /><input type="text" name="teacher-faculty" id="teacher-faculty" placeholder='Ex: FACOM' /></div>
           <div id='page-button'><button id='previous-page'><img src="./src/imgs/arrow-circle-left-fill.svg" alt="" /></button><button id='next-page'><img src="./src/imgs/arrow-circle-right-fill.svg" alt="" /></button></div>
         </InfoInputContainer>
@@ -179,13 +181,13 @@ function App() {
           <div id='page-button'><button id='previous-page'><img src="./src/imgs/arrow-circle-left-fill.svg" alt="" /></button><button id='next-page'><img src="./src/imgs/arrow-circle-right-fill.svg" alt="" /></button></div>
         </InfoInputContainer>
         
-        <InfoInputContainer>
+        <InfoInputContainer id='user-location-container'>
           <div className="info-card"><input type="radio" name="user-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus">Monte Carmelo - Araras</label></div>
           <div className="info-card"><input type="radio" name="user-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus">Monte Carmelo - Boa Vista</label></div>
           <div id='page-button'><button id='previous-page'><img src="./src/imgs/arrow-circle-left-fill.svg" alt="" /></button><button id='next-page'><img src="./src/imgs/arrow-circle-right-fill.svg" alt="" /></button></div>
         </InfoInputContainer>
 
-        <InfoInputContainer>
+        <InfoInputContainer id='teacher-location-container'>
           <div className="info-card"><input type="radio" name="teacher-location" id="araras-campus-teacher" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus-teacher">Monte Carmelo - Araras</label></div>
           <div className="info-card"><input type="radio" name="teacher-location" id="boa-vista-campus-teacher" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus-teacher">Monte Carmelo - Boa Vista</label></div>
           <div className="info-card"><input type="text" name="teacher-room" placeholder='Ex: A201' /></div>
