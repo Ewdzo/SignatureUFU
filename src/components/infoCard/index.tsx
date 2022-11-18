@@ -22,10 +22,18 @@ position: relative;
 export const InfoCard = styled.div`
 width: 40%;
 min-height: 80%;
+
 margin: 5%;
-border: solid red 1px;
+border: solid grey 5px;
+border-radius: 2%;
+
+
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
 `
 
 export const InfoCardImage = styled.img`
-height: 100px;
+height: 250px;
 `
