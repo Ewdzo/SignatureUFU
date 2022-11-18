@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: white;
+    background-color: #092269;
     min-width: 100vw;
 }
 
@@ -35,15 +35,6 @@ body {
 #page-button {
     position: absolute;
     bottom: 0;
-}
-
-#page-button > button {
-    border: 0;
-    background: none;
-}
-
-#page-button > button > img {
-    height: 35px;
 }
 
 #card {
