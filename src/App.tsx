@@ -156,53 +156,54 @@ function App() {
       <InfoInputContainer id='user-type-picker' >
             <div className="info-card"><input type="radio" name="user-type" id="student-teacher-type" value="student-teacher" /><label htmlFor="student-teacher-type"><img src={images[0]} alt="" /></label></div>
             <div className="info-card"><input type="radio" name="user-type" id="other-type" value="other" /><label htmlFor="other-type"><img src={images[1]} alt="" /></label></div>
-            <div id='page-button'><PageTurnerButton id='next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
+            <div id='page-button'><PageTurnerButton className='off' id='next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
         </InfoInputContainer>
 
         <InfoInputContainer>
           <input type="file" id="qr-code-submit" name="" />
-          <div id='page-button'><PageTurnerButton id='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton id='next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
+          <div id='page-button'><PageTurnerButton id='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton className='off' id='next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
         </InfoInputContainer>
         
         <InfoInputContainer id='teacher-faculty-container'>
           <div className='info-type-container'><img src={images[4]} alt="" /><input type="text" name="teacher-faculty" id="teacher-faculty" placeholder='Ex: FACOM' /></div>
-          <div id='page-button'><PageTurnerButton id='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton id='next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
+          <div id='page-button'><PageTurnerButton id='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton className='off' id='next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
         </InfoInputContainer>
 
         <InfoInputContainer id='user-pronouns-picker'>
           <div className="info-card"><input type="radio" name="user-gender" id="male-gender" value="o" /><label htmlFor="male-gender"><img src={images[5]} /></label></div>
           <div className="info-card"><input type="radio" name="user-gender" id="female-gender" value="a" /><label htmlFor="female-gender"><img src={images[6]} alt="" /></label></div>
           <div className="info-card"><input type="radio" name="user-gender" id="other-gender" value="e" /><label htmlFor="other-gender"><img src={images[7]} alt="" /></label></div>
-          <div id='page-button'><PageTurnerButton id='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton id='next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
+          <div id='page-button'><PageTurnerButton id='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton className='off' id='next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
         </InfoInputContainer>
 
         <InfoInputContainer>
           <div className='info-type-container'><img src={images[8]} alt="" /><input type="email" name="user-email" id="user-email" placeholder='Ex: aluno@ufu.br' /></div>
           <div className='info-type-container'><img src={images[9]} alt="" /><input type="tel" name="user-phone" id="user-phone" placeholder='Ex: (34) 3810-1010' /></div>
-          <div id='page-button'><PageTurnerButton id='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton id='next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
+          <div id='page-button'><PageTurnerButton id='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton className='off' id='next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
         </InfoInputContainer>
         
         <InfoInputContainer id='user-location-container'>
           <div className="info-card"><input type="radio" name="user-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus">Monte Carmelo - Araras</label></div>
           <div className="info-card"><input type="radio" name="user-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus">Monte Carmelo - Boa Vista</label></div>
-          <div id='page-button'><PageTurnerButton id='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton id='next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
+          <div id='page-button'><PageTurnerButton id='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton className='off' id='next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
         </InfoInputContainer>
 
         <InfoInputContainer id='teacher-location-container'>
           <div className="info-card"><input type="radio" name="teacher-location" id="araras-campus-teacher" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus-teacher">Monte Carmelo - Araras</label></div>
           <div className="info-card"><input type="radio" name="teacher-location" id="boa-vista-campus-teacher" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus-teacher">Monte Carmelo - Boa Vista</label></div>
           <div className="info-card"><input type="text" name="teacher-room" placeholder='Ex: A201' /></div>
-          <div id='page-button'><PageTurnerButton id='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton id='next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
+          <div id='page-button'><PageTurnerButton id='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton className='off' id='next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
         </InfoInputContainer>
 
         <InfoInputContainer id='card-theme-picker'>
           <div className="info-card"><input type="radio" name="card-theme" id="blue-theme" value="blue" /><label htmlFor="blue-theme">Blue</label></div>
           <div className="info-card"><input type="radio" name="card-theme" id="white-theme" value="white" /><label htmlFor="white-theme">White</label></div>
-          <div id='page-button'><PageTurnerButton id='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton id='next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
+          <div id='page-button'><PageTurnerButton id='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton className='off' id='next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
         </InfoInputContainer>
 
         <InfoInputContainer>
           <input type="button" value="print" id="print-button" />
+          <div id='page-button'><PageTurnerButton id='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton></div>
         </InfoInputContainer>
         
       </div>
