@@ -13,5 +13,7 @@ border: solid black 1px;
 padding: 10px;
 border-radius: 2%;
 
+background-color: #F5F5F5;
+
 position: relative;
 `
