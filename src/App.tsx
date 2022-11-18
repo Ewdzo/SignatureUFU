@@ -4,7 +4,7 @@ import QrScanner from 'qr-scanner';
 import { useEffect, useState } from 'react';
 import './App.css'
 import { Card } from './components/card';
-import { InfoInputContainer } from './components/infoCard';
+import { InfoCard, InfoCardImage, InfoInputContainer } from './components/infoCard';
 import { InfoRadioButton } from './components/infoRadioButton';
 import { PageTurnerButton, PageTurnerIcon } from './components/pageTurners';
 import images from './imgs/index.jsx';
@@ -162,8 +162,8 @@ function App() {
     <>
       <div id='main-container'>
       <InfoInputContainer id='user-type-picker' >
-            <div className="info-card"><InfoRadioButton name="user-type" id="student-teacher-type" value="student-teacher" /><label htmlFor="student-teacher-type"><img src={images[0]} alt="" /></label></div>
-            <div className="info-card"><InfoRadioButton name="user-type" id="other-type" value="other" /><label htmlFor="other-type"><img src={images[1]} alt="" /></label></div>
+            <InfoCard><InfoRadioButton name="user-type" id="student-teacher-type" value="student-teacher" /><label htmlFor="student-teacher-type"><InfoCardImage src={images[0]} alt="" /></label></InfoCard>
+            <InfoCard><InfoRadioButton name="user-type" id="other-type" value="other" /><label htmlFor="other-type"><InfoCardImage src={images[1]} alt="" /></label></InfoCard>
             <div id='page-button'><PageTurnerButton className='off next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
         </InfoInputContainer>
 
@@ -178,9 +178,9 @@ function App() {
         </InfoInputContainer>
 
         <InfoInputContainer id='user-pronouns-picker'>
-          <div className="info-card"><InfoRadioButton name="user-gender" id="male-gender" value="o" /><label htmlFor="male-gender"><img src={images[5]} /></label></div>
-          <div className="info-card"><InfoRadioButton name="user-gender" id="female-gender" value="a" /><label htmlFor="female-gender"><img src={images[6]} alt="" /></label></div>
-          <div className="info-card"><InfoRadioButton name="user-gender" id="other-gender" value="e" /><label htmlFor="other-gender"><img src={images[7]} alt="" /></label></div>
+          <InfoCard><InfoRadioButton name="user-gender" id="male-gender" value="o" /><label htmlFor="male-gender"><InfoCardImage src={images[5]} /></label></InfoCard>
+          <InfoCard><InfoRadioButton name="user-gender" id="female-gender" value="a" /><label htmlFor="female-gender"><InfoCardImage src={images[6]} alt="" /></label></InfoCard>
+          <InfoCard><InfoRadioButton name="user-gender" id="other-gender" value="e" /><label htmlFor="other-gender"><InfoCardImage src={images[7]} alt="" /></label></InfoCard>
           <div id='page-button'><PageTurnerButton className='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton className='off next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
         </InfoInputContainer>
 
@@ -191,21 +191,21 @@ function App() {
         </InfoInputContainer>
         
         <InfoInputContainer id='user-location-container'>
-          <div className="info-card"><InfoRadioButton name="user-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus">Monte Carmelo - Araras</label></div>
-          <div className="info-card"><InfoRadioButton name="user-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus">Monte Carmelo - Boa Vista</label></div>
+          <InfoCard><InfoRadioButton name="user-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus">Monte Carmelo - Araras</label></InfoCard>
+          <InfoCard><InfoRadioButton name="user-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus">Monte Carmelo - Boa Vista</label></InfoCard>
           <div id='page-button'><PageTurnerButton className='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton className='off next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
         </InfoInputContainer>
 
         <InfoInputContainer id='teacher-location-container'>
-          <div className="info-card"><InfoRadioButton name="teacher-location" id="araras-campus-teacher" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus-teacher">Monte Carmelo - Araras</label></div>
-          <div className="info-card"><InfoRadioButton name="teacher-location" id="boa-vista-campus-teacher" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus-teacher">Monte Carmelo - Boa Vista</label></div>
-          <div className="info-card"><input type="text" name="teacher-room" placeholder='Ex: A201' /></div>
+          <InfoCard><InfoRadioButton name="teacher-location" id="araras-campus-teacher" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus-teacher">Monte Carmelo - Araras</label></InfoCard>
+          <InfoCard><InfoRadioButton name="teacher-location" id="boa-vista-campus-teacher" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus-teacher">Monte Carmelo - Boa Vista</label></InfoCard>
+          <InfoCard><input type="text" name="teacher-room" placeholder='Ex: A201' /></InfoCard>
           <div id='page-button'><PageTurnerButton className='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton className='off next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
         </InfoInputContainer>
 
         <InfoInputContainer id='card-theme-picker'>
-          <div className="info-card"><InfoRadioButton name="card-theme" id="blue-theme" value="blue" /><label htmlFor="blue-theme">Blue</label></div>
-          <div className="info-card"><InfoRadioButton name="card-theme" id="white-theme" value="white" /><label htmlFor="white-theme">White</label></div>
+          <InfoCard><InfoRadioButton name="card-theme" id="blue-theme" value="blue" /><label htmlFor="blue-theme">Blue</label></InfoCard>
+          <InfoCard><InfoRadioButton name="card-theme" id="white-theme" value="white" /><label htmlFor="white-theme">White</label></InfoCard>
           <div id='page-button'><PageTurnerButton className='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton className='off next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
         </InfoInputContainer>
 
