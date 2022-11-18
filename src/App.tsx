@@ -1,13 +1,13 @@
+import './App.css'
 import axios from 'axios';
 import html2canvas from 'html2canvas';
 import QrScanner from 'qr-scanner';
+import images from './imgs/index.jsx';
 import { useEffect, useState } from 'react';
-import './App.css'
 import { Card } from './components/card';
-import { InfoCard, InfoCardImage, InfoInputContainer } from './components/infoCard';
 import { InfoRadioButton } from './components/infoRadioButton';
 import { PageTurnerButton, PageTurnerIcon } from './components/pageTurners';
-import images from './imgs/index.jsx';
+import { InfoCard, InfoCardImage, InfoInputContainer } from './components/infoCard';
 
 function App() {
   const [userName, setUserName] = useState(String);
@@ -16,22 +16,13 @@ function App() {
   const [userMajor, setUserMajor] = useState(String);
   const [userPhone, setUserPhone] = useState(String);
   const [userEmail, setUserEmail] = useState(String);
-  const [userURL, setUserURL] = useState(String);
+  const [userURL, setUserURL] = useState("www.ufu.com.br");
   const [userLocation, setUserLocation] = useState(String);
   const [cardTheme, setCardTheme] = useState("blue" as string);
 
-  const setCard = () => {
-    const checkedTheme = (document.querySelector('input[name="card-theme"]:checked') as HTMLInputElement).value ;
-    
-    if(checkedTheme != null) {
-      setCardTheme(checkedTheme);
-    }
-  };
-  // rewrite /\
-
   const printCard = async () => {
 
-    fillUserInfo(userType);
+    // fillUserInfo(userType);
 
     await new Promise(r => setTimeout(r, 1000));
 
@@ -44,9 +35,8 @@ function App() {
     (document.getElementById("card") as HTMLElement).style.display = 'none' 
   };
 
-  const scanQR = () => {
-    const qrCodeSubmit = document.getElementById("qr-code-submit") as HTMLInputElement;
-    const qrCode = qrCodeSubmit.files![0];
+  const scanQRInput = (qrInput: HTMLInputElement) => {
+    const qrCode = qrInput.files![0];
     if (!qrCode) {
       return;
     }
@@ -57,18 +47,19 @@ function App() {
       axios.get(`https://www.sistemas.ufu.br/valida-gateway/id-digital/buscarDadosIdDigital?idIdentidade=${result}`) 
       .then(response => response.data.identidadeDigital)
       .then((response) => {
-        setUserType(response.vinculo);
-
-        const fullName = response.nome.split(" ");
-        const nameSurname = fullName[0] + " " + fullName[1];
-        setUserName(nameSurname);  
-
         if(response.vinculo == "aluno"){
           const userMajorFull = response.informacao.split(" ");
           const userMajorGraduation = userMajorFull[2] + " " + userMajorFull[3] + " " + userMajorFull[4].replace(":", "");
           setUserMajor(userMajorGraduation);
+          setUserType("Alun");
         }
-        
+        else {
+          setUserType("Professor");
+        }
+
+        const fullName = response.nome.split(" ");
+        const nameSurname = fullName[0] + " " + fullName[1];
+        setUserName(nameSurname);  
 
       })
       .catch(function (error) {
@@ -77,44 +68,6 @@ function App() {
     )
     .catch(e => console.log('No QR code found.'));
   };
-  // rewrite /\
-
-  const fillUserInfo = (type: string) => {
-    
-    const checkedPronouns = (document.querySelector('input[name="user-gender"]:checked') as HTMLInputElement).value;
-    const inputEmail = (document.querySelector('input[name="user-email"]') as HTMLInputElement).value;
-    const inputPhone = (document.querySelector('input[name="user-phone"]') as HTMLInputElement).value;
-
-    if(type == "aluno") {
-      const checkedLocation = (document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value;
-
-      setUserType("Alun") 
-      setUserPronouns(checkedPronouns);
-      setUserLocation(checkedLocation);
-    }
-    else if(type == "docente"){
-      const teacherLocation = (document.querySelector('input[name="teacher-room"]') as HTMLInputElement).value + " - " + (document.querySelector('input[name="teacher-location"]:checked') as HTMLInputElement).value;
-      const teacherFaculty = (document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement).value;
-      setUserType("Professor") 
-      
-      if(checkedPronouns == "o"){
-        setUserPronouns("")
-      } 
-      else {
-        setUserPronouns(checkedPronouns)
-      };
-
-      setUserType("Professor") 
-      setUserLocation(teacherLocation);
-      setUserMajor(teacherFaculty)
-    }
-
-    setUserEmail(inputEmail);
-    setUserPhone(inputPhone);
-    setUserURL("www.ufu.com.br");
-  };
-  // rewrite /\
-
 
   const previousPage = (index: number) => {
     if(index > 0){
@@ -133,12 +86,11 @@ function App() {
   document.body.onload = () => { document.querySelector('#main-container')?.childNodes.forEach( (element: any, index) => { if(index > 0) {element.style.display = "none"; }}); };
 
   useEffect(() => {
-    const cardThemePickers = document.querySelectorAll('input[name="card-theme"]');
-    cardThemePickers.forEach( element => element.addEventListener('click', setCard) )
 
-    const qrInput = document.getElementById("qr-code-submit");
-    (qrInput as HTMLInputElement).onchange = () => {  
-      scanQR();
+    const qrInput = document.getElementById("qr-code-submit") as HTMLInputElement;
+    qrInput.onchange = () => {  
+      scanQRInput(qrInput);
+      document.querySelectorAll(".next-page")[1].classList.remove("off");
     }
 
     (document.getElementById("card") as HTMLElement).style.display = 'none';  
@@ -153,7 +105,51 @@ function App() {
     nextPageButtons.forEach( (element, index) => {(element as HTMLButtonElement).onclick = () => { nextPage(index);}});
 
     const userTypeButtons = document.getElementsByName("user-type");
-    userTypeButtons.forEach( (element) => { (element as HTMLInputElement).onclick = () => { document.getElementsByClassName("off")[0].classList.toggle("off") } } )
+    userTypeButtons.forEach((element) => {(element as HTMLInputElement).onclick = () => {document.querySelectorAll(".next-page")[0].classList.remove("off")}})
+
+    const TeacherFacultyInput = (document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement);
+    const userPronounsInput = document.querySelectorAll('input[name="user-gender"]');
+    const userEmailInput = (document.querySelector('input[name="user-email"]') as HTMLInputElement);
+    const userPhoneInput = (document.querySelector('input[name="user-phone"]') as HTMLInputElement);
+    const userLocationInput = document.querySelectorAll('input[name="user-location"]');
+    const teacherRoomInput = (document.querySelector('input[name="teacher-room"]') as HTMLInputElement);
+
+
+    TeacherFacultyInput.onchange = () => { 
+      if(userType == "Professor") {setUserMajor(((document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement).value) as unknown as string)};
+      document.querySelectorAll(".next-page")[2].classList.remove("off");
+    };
+
+    userPronounsInput.forEach((element) => {(element as HTMLInputElement).onclick = () => {
+      setUserPronouns((document.querySelector('input[name="user-gender"]:checked') as HTMLInputElement).value)
+      document.querySelectorAll(".next-page")[3].classList.remove("off");
+    }});
+
+    userEmailInput.onchange = () => {
+      setUserEmail((userEmailInput.value) as unknown as string);
+      if(userEmailInput.value && userPhoneInput.value) {document.querySelectorAll(".next-page")[4].classList.remove("off")}
+    };
+
+    userPhoneInput.onchange = () => {
+      setUserPhone((userPhoneInput.value) as unknown as string);
+      if(userEmailInput.value && userPhoneInput.value) {document.querySelectorAll(".next-page")[4].classList.remove("off")}
+    };
+
+    userLocationInput.forEach((element) => {(element as HTMLInputElement).onclick = () => {
+      setUserLocation((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value)
+      document.querySelectorAll(".next-page")[5].classList.remove("off");
+    }});
+
+    teacherRoomInput.onchange = () => {
+      setUserLocation(teacherRoomInput.value + " - " + ((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value))
+      document.querySelectorAll(".next-page")[6].classList.remove("off");
+    };
+
+    const cardThemePickers = document.querySelectorAll('input[name="card-theme"]');
+    cardThemePickers.forEach((element) => {(element as HTMLInputElement).onclick = () => {
+      setCardTheme((document.querySelector('input[name="card-theme"]:checked') as HTMLInputElement).value)
+      document.querySelectorAll(".next-page")[7].classList.remove("off");
+    }});
 
   });
 
@@ -197,8 +193,6 @@ function App() {
         </InfoInputContainer>
 
         <InfoInputContainer id='teacher-location-container'>
-          <InfoCard><InfoRadioButton name="teacher-location" id="araras-campus-teacher" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus-teacher">Monte Carmelo - Araras</label></InfoCard>
-          <InfoCard><InfoRadioButton name="teacher-location" id="boa-vista-campus-teacher" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus-teacher">Monte Carmelo - Boa Vista</label></InfoCard>
           <InfoCard><input type="text" name="teacher-room" placeholder='Ex: A201' /></InfoCard>
           <div id='page-button'><PageTurnerButton className='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton className='off next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
         </InfoInputContainer>
