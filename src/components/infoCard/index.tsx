@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const InfoInputContainer = styled.div`
 min-height: 500px;
+height: 90vh;
 width: 80%;
 
 display: flex;

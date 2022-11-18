@@ -173,7 +173,7 @@ function App() {
         </InfoInputContainer>
         
         <InfoInputContainer id='teacher-faculty-container'>
-          <div className='info-type-container'><img src={images[4]} alt="" /><input type="text" name="teacher-faculty" id="teacher-faculty" placeholder='Ex: FACOM' /></div>
+          <div className='info-type-container'><InfoCardImage src={images[4]} alt="" /><input type="text" name="teacher-faculty" id="teacher-faculty" placeholder='Ex: FACOM' /></div>
           <div id='page-button'><PageTurnerButton className='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton className='off next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
         </InfoInputContainer>
 
@@ -185,8 +185,8 @@ function App() {
         </InfoInputContainer>
 
         <InfoInputContainer>
-          <div className='info-type-container'><img src={images[8]} alt="" /><input type="email" name="user-email" id="user-email" placeholder='Ex: aluno@ufu.br' /></div>
-          <div className='info-type-container'><img src={images[9]} alt="" /><input type="tel" name="user-phone" id="user-phone" placeholder='Ex: (34) 3810-1010' /></div>
+          <div className='info-type-container'><InfoCardImage src={images[8]} alt="" /><input type="email" name="user-email" id="user-email" placeholder='Ex: aluno@ufu.br' /></div>
+          <div className='info-type-container'><InfoCardImage src={images[9]} alt="" /><input type="tel" name="user-phone" id="user-phone" placeholder='Ex: (34) 3810-1010' /></div>
           <div id='page-button'><PageTurnerButton className='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton className='off next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
         </InfoInputContainer>
         

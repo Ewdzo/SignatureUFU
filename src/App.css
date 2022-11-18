@@ -16,20 +16,11 @@ body {
 
 #main-container {
     width: 80%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.info-card {
-    width: 40%;
-    min-height: 80%;
-    margin: 5%;
-    border: solid red 1px;
-}
-
-.info-card > label > img, .info-type-container > img {
-    height: 100px;
+    justify-content: center;
 }
 
 #page-button {
