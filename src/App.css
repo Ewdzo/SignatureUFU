@@ -98,3 +98,8 @@ body {
 #userInfo > tbody > tr > td > h2, #universityInfo > tbody > tr > td > h4 {
     font-weight: 100;
 }
+
+.off > img {
+    filter: opacity(0.1);
+    cursor: default;
+}
