@@ -167,6 +167,17 @@ function App() {
           <input type="file" id="qr-code-submit" name="" />
           <div id='page-button'><PageTurnerButton className='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton className='off next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
         </InfoInputContainer>
+
+        <InfoInputContainer>
+          <div className='info-type-container'>
+            <InfoCardImage src={images[10]} alt="" />
+            <input type="text" name="user-name" id="user-name" placeholder='Ex: Enzo Weder' />
+            <input type="text" name="user-title" id="user-title" placeholder='Ex: Aluno de Sistemas de Informação' />
+            <input type="text" name="user-title" id="user-location" placeholder='Ex: Monte Carmelo - Unidades Araras' />
+            <input type="text" name="user-site" id="user-site" placeholder='Ex: www.github.com/Ewdzo' />
+          </div>
+          <div id='page-button'><PageTurnerButton className='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton className='off next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
+        </InfoInputContainer>
         
         <InfoInputContainer id='teacher-faculty-container'>
           <div className='info-type-container'><InfoCardImage src={images[4]} alt="" /><input type="text" name="teacher-faculty" id="teacher-faculty" placeholder='Ex: FACOM' /></div>
