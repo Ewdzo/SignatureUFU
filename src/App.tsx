@@ -83,8 +83,6 @@ function App() {
     }
   }
 
-  document.body.onload = () => { document.querySelector('#main-container')?.childNodes.forEach( (element: any, index) => { if(index > 0) {element.style.display = "none"; }}); };
-
   useEffect(() => {
 
     const qrInput = document.getElementById("qr-code-submit") as HTMLInputElement;

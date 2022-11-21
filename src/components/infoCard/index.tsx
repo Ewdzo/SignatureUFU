@@ -4,7 +4,8 @@ import styled from "styled-components";
 export const InfoInputContainer = styled.div`
 min-height: 500px;
 height: 90vh;
-width: 80%;
+min-width: 1500px; 
+width: 80vw;
 
 display: flex;
 justify-content: center;
@@ -17,6 +18,7 @@ border-radius: 2%;
 background-color: #F5F5F5;
 
 position: relative;
+scroll-snap-align: start;
 `
 
 export const InfoCard = styled.div`
