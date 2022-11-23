@@ -190,8 +190,8 @@ function App() {
         </InfoInputContainer>
 
         <InfoInputContainer>
-          <div className='info-type-container'><InfoCardImage src={images[8]} alt="" /><input type="email" name="user-email" id="user-email" placeholder='Ex: aluno@ufu.br' /></div>
-          <div className='info-type-container'><InfoCardImage src={images[9]} alt="" /><input type="tel" name="user-phone" id="user-phone" placeholder='Ex: (34) 3810-1010' /></div>
+          <InfoCard><InfoCardImage src={images[8]} alt="" /><input type="email" name="user-email" id="user-email" placeholder='Ex: aluno@ufu.br' /></InfoCard>
+          <InfoCard><InfoCardImage src={images[9]} alt="" /><input type="tel" name="user-phone" id="user-phone" placeholder='Ex: (34) 3810-1010' /></InfoCard>
           <div id='page-button'><PageTurnerButton className='previous-page'><PageTurnerIcon src={images[2]} alt="" /></PageTurnerButton><PageTurnerButton className='off next-page'><PageTurnerIcon src={images[3]} alt="" /></PageTurnerButton></div>
         </InfoInputContainer>
         
