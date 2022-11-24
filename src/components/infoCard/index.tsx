@@ -2,10 +2,8 @@ import styled from "styled-components";
 
 
 export const InfoInputContainer = styled.div`
-min-height: 500px;
-height: 90vh;
-min-width: 1500px; 
-width: 80vw;
+height: 80vh; 
+min-width: 70vw;
 
 display: flex;
 justify-content: center;
@@ -13,19 +11,21 @@ align-items: center;
 
 border: solid black 1px;
 padding: 10px;
-border-radius: 2%;
+border-radius: 11px;
 
 background-color: #F5F5F5;
 
 position: relative;
-scroll-snap-align: start;
+scroll-snap-align: center;
+
+margin: 0 10vw;
 `
 
 export const InfoCard = styled.div`
 width: 40%;
-min-height: 80%;
+height: 30%;
 
-margin: 5%;
+margin: 2%;
 border: solid grey 5px;
 border-radius: 2%;
 
@@ -37,5 +37,6 @@ justify-content: center;
 `
 
 export const InfoCardImage = styled.img`
-height: 250px;
+height: 20vw;
+max-height: 200px;
 `
