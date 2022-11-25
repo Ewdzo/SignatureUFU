@@ -18,7 +18,7 @@ body {
 }
 
 #main-container {
-    width: 70vw;
+    width: 85vw;
     display: flex;
     overflow: hidden;
     scroll-snap-type: x mandatory;
