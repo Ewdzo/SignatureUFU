@@ -7,7 +7,7 @@ import images from './imgs/index.jsx';
 import { useEffect, useState } from 'react';
 import { Card } from './components/card';
 import { InfoRadioButton } from './components/infoRadioButton';
-import { InfoCard, InfoCardImage, InfoInputContainer } from './components/infoCard';
+import { InfoCard, InfoCardImage, InfoInputContainer, InfoInputText } from './components/infoCard';
 
 function App() {
   const [userName, setUserName] = useState<String>();
@@ -162,15 +162,15 @@ function App() {
         <InfoInputContainer className="infoContainer" id="user-information-submitter">
           <div className='info-type-container'>
             <InfoCardImage src={images[10]} alt="" />
-            <input type="text" name="user-name" id="user-name" placeholder='Ex: Enzo Weder' />
-            <input type="text" name="user-title" id="user-title" placeholder='Ex: Aluno de Sistemas de Informação' />
-            <input type="text" name="user-title" id="user-location" placeholder='Ex: Monte Carmelo - Unidades Araras' />
-            <input type="text" name="user-site" id="user-site" placeholder='Ex: www.github.com/Ewdzo' />
+            <InfoInputText name="user-name" id="user-name" placeholder='Ex: Enzo Weder' />
+            <InfoInputText name="user-title" id="user-title" placeholder='Ex: Aluno de Sistemas de Informação' />
+            <InfoInputText name="user-title" id="user-location" placeholder='Ex: Monte Carmelo - Unidades Araras' />
+            <InfoInputText name="user-site" id="user-site" placeholder='Ex: www.github.com/Ewdzo' />
           </div>         
         </InfoInputContainer>
         
         <InfoInputContainer className="infoContainer" id='teacher-faculty-container'>
-          <div className='info-type-container'><InfoCardImage src={images[4]} alt="" /><input type="text" name="teacher-faculty" id="teacher-faculty" placeholder='Ex: FACOM' /></div>          
+          <div className='info-type-container'><InfoCardImage src={images[4]} alt="" /><InfoInputText name="teacher-faculty" id="teacher-faculty" placeholder='Ex: FACOM' /></div>          
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='user-pronouns-picker'>
@@ -180,8 +180,8 @@ function App() {
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='user-contact-picker'>
-          <InfoCard><InfoCardImage src={images[8]} alt="" /><input type="email" name="user-email" id="user-email" placeholder='Ex: aluno@ufu.br' /></InfoCard>
-          <InfoCard><InfoCardImage src={images[9]} alt="" /><input type="tel" name="user-phone" id="user-phone" placeholder='Ex: (34) 3810-1010' /></InfoCard>          
+          <InfoCard><InfoCardImage src={images[8]} alt="" /><InfoInputText type="email" name="user-email" id="user-email" placeholder='Ex: aluno@ufu.br' /></InfoCard>
+          <InfoCard><InfoCardImage src={images[9]} alt="" /><InfoInputText type="tel" name="user-phone" id="user-phone" placeholder='Ex: (34) 3810-1010' /></InfoCard>          
         </InfoInputContainer>
         
         <InfoInputContainer className="infoContainer" id='user-location-container'>
@@ -190,7 +190,7 @@ function App() {
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='teacher-location-container'>
-          <InfoCard><input type="text" name="teacher-room" placeholder='Ex: A201' /></InfoCard>
+          <InfoCard><InfoInputText name="teacher-room" placeholder='Ex: A201' /></InfoCard>
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='card-theme-picker'>
