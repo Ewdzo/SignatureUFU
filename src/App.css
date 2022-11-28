@@ -50,6 +50,10 @@ body {
     width: 30%;
     justify-content: space-between;
 
+    background: #F5F5F5;
+    padding: 1%;
+    border-radius: 5vh;
+    border: solid;
 }
 
 #nav-buttons-container > ul > li {
