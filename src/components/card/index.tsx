@@ -1,3 +1,5 @@
+import images from './imgs/index.jsx';
+
 export function Card(props : any) {
 
     return (
@@ -15,10 +17,10 @@ export function Card(props : any) {
                     <tbody>
                         <tr><td><h1>{props.userName}</h1></td></tr>
                         <tr><td><h2>{props.userType}{props.userPronouns} de {props.userMajor}</h2></td></tr>
-                        <tr><td><img src="src\imgs\mail_icon.png" alt="Mail Icon" />{props.userEmail}</td></tr>
-                        <tr><td><img src="src\imgs\phone_icon.png" alt="Phone Icon" />{props.userPhone}</td></tr>
-                        <tr><td><img src="src\imgs\person_icon.png" alt="Person Icon" />{props.userURL}</td></tr>
-                        <tr><td><img src="src\imgs\location_icon.png" alt="Location Icon" />{props.userLocation}</td></tr>
+                        <tr><td><img src={images[12]} alt="Mail Icon" />{props.userEmail}</td></tr>
+                        <tr><td><img src={images[13]} alt="Phone Icon" />{props.userPhone}</td></tr>
+                        <tr><td><img src={images[10]} alt="Person Icon" />{props.userURL}</td></tr>
+                        <tr><td><img src={images[14]} alt="Location Icon" />{props.userLocation}</td></tr>
                     </tbody>
                 </table>
             </div>
