@@ -78,6 +78,10 @@ body {
     background: #0C0C0C;
 }
 
+.selected-card {
+    background: #CCCCCC;
+}
+
 #card {
     font-family: 'Arimo', sans-serif;
     height: 600px;
