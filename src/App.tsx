@@ -160,17 +160,19 @@ function App() {
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id="user-information-submitter">
-          <div className='info-type-container'>
+          <InfoCard className='info-type-container' style={{display: "flex", flexDirection: "column"}}>
             <InfoCardImage src={images[10]} alt="" />
             <InfoInputText name="user-name" id="user-name" placeholder='Ex: Enzo Weder' />
             <InfoInputText name="user-title" id="user-title" placeholder='Ex: Aluno de Sistemas de Informação' />
             <InfoInputText name="user-title" id="user-location" placeholder='Ex: Monte Carmelo - Unidades Araras' />
             <InfoInputText name="user-site" id="user-site" placeholder='Ex: www.github.com/Ewdzo' />
-          </div>         
+          </InfoCard>         
         </InfoInputContainer>
         
         <InfoInputContainer className="infoContainer" id='teacher-faculty-container'>
-          <div className='info-type-container'><InfoCardImage src={images[4]} alt="" /><InfoInputText name="teacher-faculty" id="teacher-faculty" placeholder='Ex: FACOM' /></div>          
+          <InfoCard>
+            <InfoCardImage src={images[4]} alt="" /><InfoInputText name="teacher-faculty" id="teacher-faculty" placeholder='Ex: FACOM' />
+          </InfoCard>          
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='user-pronouns-picker'>
