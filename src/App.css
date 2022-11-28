@@ -79,7 +79,12 @@ body {
 }
 
 .selected-card {
-    background: #CCCCCC;
+    background: #092269;
+    color: white;
+}
+
+.selected-card > label > img, .selected-card > img  {
+    filter: invert(1)
 }
 
 #card {
