@@ -80,9 +80,29 @@ function App() {
     (infoContainers[index] as HTMLElement).scrollIntoView({behavior: 'smooth'})
   }
 
+  const selectCard = (classElements: NodeListOf<Element>, index: number) => {
+    for(let i=0; i< classElements.length; i++){
+      (classElements[i] as HTMLElement).classList.remove("selected-card");
+    }
+
+    (classElements[index] as HTMLElement).classList.add("selected-card");
+  }
+
   useEffect(() => {
     const navButtons = document.querySelectorAll(".nav-button");
     navButtons.forEach( (element, index) => {(element as HTMLElement).onclick = () => { scrollTo(index)}});
+    
+    const userTypeCards = document.querySelectorAll(".info-radio-type");
+    userTypeCards.forEach( (element, index) => {(element as HTMLElement).onclick = () => { selectCard(userTypeCards, index)}});
+    
+    const userGenderCards = document.querySelectorAll(".info-radio-gender");
+    userGenderCards.forEach( (element, index) => {(element as HTMLElement).onclick = () => { selectCard(userGenderCards, index)}});
+
+    const userLocationCards = document.querySelectorAll(".info-radio-location");
+    userLocationCards.forEach( (element, index) => {(element as HTMLElement).onclick = () => { selectCard(userLocationCards, index)}});
+
+    const userThemeCards = document.querySelectorAll(".info-radio-theme");
+    userThemeCards.forEach( (element, index) => {(element as HTMLElement).onclick = () => { selectCard(userThemeCards, index)}});
 
     const qrInput = document.getElementById("qr-code-submit") as HTMLInputElement;
     qrInput.onchange = () => {  
@@ -90,7 +110,7 @@ function App() {
     }
 
     (document.getElementById("card") as HTMLElement).style.display = 'none';  
-
+    
     const printButton = document.getElementById("print-button");
     (printButton as HTMLInputElement).onclick = () => { printCard() };
 
@@ -130,6 +150,8 @@ function App() {
       setCardTheme((document.querySelector('input[name="card-theme"]:checked') as HTMLInputElement).value)
     }});
 
+
+
   });
 
 
@@ -151,8 +173,8 @@ function App() {
       </div>
       <div id='main-container'>
         <InfoInputContainer className="infoContainer" id='user-type-picker' >
-            <InfoCard><InfoRadioButton name="user-type" id="student-teacher-type" value="student-teacher" /><label htmlFor="student-teacher-type"><InfoCardImage src={images[0]} alt="" /></label></InfoCard>
-            <InfoCard><InfoRadioButton name="user-type" id="other-type" value="other" /><label htmlFor="other-type"><InfoCardImage src={images[1]} alt="" /></label></InfoCard>
+            <InfoCard className='info-radio-type'><InfoRadioButton name="user-type" id="student-teacher-type" value="student-teacher" /><label htmlFor="student-teacher-type"><InfoCardImage src={images[0]} alt="" /></label></InfoCard>
+            <InfoCard className='info-radio-type'><InfoRadioButton name="user-type" id="other-type" value="other" /><label htmlFor="other-type"><InfoCardImage src={images[1]} alt="" /></label></InfoCard>
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='user-qr-submitter'>
@@ -176,9 +198,9 @@ function App() {
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='user-pronouns-picker'>
-          <InfoCard><InfoRadioButton name="user-gender" id="male-gender" value="o" /><label htmlFor="male-gender"><InfoCardImage src={images[5]} /></label></InfoCard>
-          <InfoCard><InfoRadioButton name="user-gender" id="female-gender" value="a" /><label htmlFor="female-gender"><InfoCardImage src={images[6]} alt="" /></label></InfoCard>
-          <InfoCard><InfoRadioButton name="user-gender" id="other-gender" value="e" /><label htmlFor="other-gender"><InfoCardImage src={images[7]} alt="" /></label></InfoCard>           
+          <InfoCard className='info-radio-gender'><InfoRadioButton name="user-gender" id="male-gender" value="o" /><label htmlFor="male-gender"><InfoCardImage src={images[5]} /></label></InfoCard>
+          <InfoCard className='info-radio-gender'><InfoRadioButton name="user-gender" id="female-gender" value="a" /><label htmlFor="female-gender"><InfoCardImage src={images[6]} alt="" /></label></InfoCard>
+          <InfoCard className='info-radio-gender'><InfoRadioButton name="user-gender" id="other-gender" value="e" /><label htmlFor="other-gender"><InfoCardImage src={images[7]} alt="" /></label></InfoCard>           
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='user-contact-picker'>
@@ -187,15 +209,15 @@ function App() {
         </InfoInputContainer>
         
         <InfoInputContainer className="infoContainer" id='user-location-container'>
-          <InfoCard>
+          <InfoCard className='info-radio-location'>
             <InfoCardImage src={images[15]} alt="" />
             <InfoRadioButton name="user-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" />
             <label htmlFor="araras-campus" style={{textAlign: "center"}}>Monte Carmelo - Araras</label>
-            </InfoCard>
-          <InfoCard>
+          </InfoCard>
+          <InfoCard className='info-radio-location'>
             <InfoCardImage src={images[15]} alt="" />
             <InfoRadioButton name="user-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" />
-            <label htmlFor="boa-vista-campus" style={{textAlign: "center"}}>Monte Carmelo - Boa Vista</label>
+            <label htmlFor="boa-vista-campus" style={{textAlign: "center"}}> Monte Carmelo - Boa Vista </label>
           </InfoCard>        
         </InfoInputContainer>
 
@@ -207,12 +229,13 @@ function App() {
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='card-theme-picker'>
-          <InfoCard><InfoRadioButton name="card-theme" id="blue-theme" value="blue" /><label htmlFor="blue-theme">Blue</label></InfoCard>
-          <InfoCard><InfoRadioButton name="card-theme" id="white-theme" value="white" /><label htmlFor="white-theme">White</label></InfoCard>     
+          <InfoCard className='info-radio-theme'><InfoRadioButton name="card-theme" id="blue-theme" value="blue" /><label htmlFor="blue-theme">Blue</label></InfoCard>
+          <InfoCard className='info-radio-theme'><InfoRadioButton name="card-theme" id="white-theme" value="white" /><label htmlFor="white-theme">White</label></InfoCard>     
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='print-container'>
-          <input type="button" value="print" id="print-button" />
+          <InfoCard><InfoCardImage src={images[16]} alt="" id="print-button"/></InfoCard>
+          
         </InfoInputContainer>   
       </div>
 
