@@ -21,13 +21,12 @@ margin: 0 10vw;
 `
 
 export const InfoCard = styled.div`
-width: 40%;
-height: 30%;
+width: 50%;
+height: 50%;
 
 margin: 2%;
 border: solid #0C0C0C 0.5vh;
-border-radius: 2%;
-padding: 10% 0;
+border-radius: 1vh;
 
 
 display: flex;
