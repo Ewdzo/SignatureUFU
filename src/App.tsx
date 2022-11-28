@@ -190,12 +190,12 @@ function App() {
           <InfoCard>
             <InfoCardImage src={images[15]} alt="" />
             <InfoRadioButton name="user-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" />
-            <label htmlFor="araras-campus">Monte Carmelo - Araras</label>
+            <label htmlFor="araras-campus" style={{textAlign: "center"}}>Monte Carmelo - Araras</label>
             </InfoCard>
           <InfoCard>
             <InfoCardImage src={images[15]} alt="" />
             <InfoRadioButton name="user-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" />
-            <label htmlFor="boa-vista-campus">Monte Carmelo - Boa Vista</label>
+            <label htmlFor="boa-vista-campus" style={{textAlign: "center"}}>Monte Carmelo - Boa Vista</label>
           </InfoCard>        
         </InfoInputContainer>
 
