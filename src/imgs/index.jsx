@@ -14,7 +14,8 @@ import Mail from "./mail_icon.png";
 import Phone from "./person_icon.png";
 import Location from "./location_icon.png";
 import MapPin from "./map-fill.svg";
+import Printer from "./printer-fill.svg"
 
-const images = [Student, UserGear, CircleLeft, CircleRight, IdentificationCard, GenderMale, GenderFemale, GenderNonBinary, Envelope, WhatsApp, Person, Pencil, Mail, Phone, Location, MapPin];
+const images = [Student, UserGear, CircleLeft, CircleRight, IdentificationCard, GenderMale, GenderFemale, GenderNonBinary, Envelope, WhatsApp, Person, Pencil, Mail, Phone, Location, MapPin, Printer];
 
 export default images;
