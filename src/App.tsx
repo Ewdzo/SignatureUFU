@@ -192,7 +192,10 @@ function App() {
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='teacher-location-container'>
-          <InfoCard><InfoInputText name="teacher-room" placeholder='Ex: A201' /></InfoCard>
+          <InfoCard>
+            <InfoCardImage src={images[15]} alt="" />
+            <InfoInputText name="teacher-room" placeholder='Ex: A201' />
+          </InfoCard>
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='card-theme-picker'>
