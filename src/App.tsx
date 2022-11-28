@@ -161,7 +161,7 @@ function App() {
 
         <InfoInputContainer className="infoContainer" id="user-information-submitter">
           <InfoCard className='info-type-container' style={{display: "flex", flexDirection: "column"}}>
-            <InfoCardImage src={images[10]} alt="" />
+            <InfoCardImage src={images[11]} alt="" />
             <InfoInputText name="user-name" id="user-name" placeholder='Ex: Enzo Weder' />
             <InfoInputText name="user-title" id="user-title" placeholder='Ex: Aluno de Sistemas de Informação' />
             <InfoInputText name="user-title" id="user-location" placeholder='Ex: Monte Carmelo - Unidades Araras' />
