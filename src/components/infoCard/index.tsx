@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const InfoInputContainer = styled.div`
 height: 80vh; 
-min-width: 80vw;
+min-width: 85vw;
 
 display: flex;
 justify-content: center;
@@ -47,5 +47,6 @@ text-align: center;
 border: 0;
 border-bottom: solid 0.2vh #0C0C0C;
 
-font-size: 1vh;
+font-size: 1.2vh;
+margin: 0.5vh 0;
 `

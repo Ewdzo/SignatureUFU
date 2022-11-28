@@ -187,8 +187,16 @@ function App() {
         </InfoInputContainer>
         
         <InfoInputContainer className="infoContainer" id='user-location-container'>
-          <InfoCard><InfoRadioButton name="user-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" /><label htmlFor="araras-campus">Monte Carmelo - Araras</label></InfoCard>
-          <InfoCard><InfoRadioButton name="user-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" /><label htmlFor="boa-vista-campus">Monte Carmelo - Boa Vista</label></InfoCard>        
+          <InfoCard>
+            <InfoCardImage src={images[15]} alt="" />
+            <InfoRadioButton name="user-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" />
+            <label htmlFor="araras-campus">Monte Carmelo - Araras</label>
+            </InfoCard>
+          <InfoCard>
+            <InfoCardImage src={images[15]} alt="" />
+            <InfoRadioButton name="user-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" />
+            <label htmlFor="boa-vista-campus">Monte Carmelo - Boa Vista</label>
+          </InfoCard>        
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='teacher-location-container'>
