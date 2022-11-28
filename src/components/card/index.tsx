@@ -1,4 +1,4 @@
-import images from './imgs/index.jsx';
+import images from '../../imgs/index.jsx';
 
 export function Card(props : any) {
 
