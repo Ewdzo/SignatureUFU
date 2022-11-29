@@ -22,15 +22,28 @@ function App() {
 
   const printCard = async () => {
 
-    await new Promise(r => setTimeout(r, 1000));
+    if(document.getElementsByTagName("canvas")[0] as HTMLElement){
+      (document.getElementsByTagName("canvas")[0] as HTMLElement).remove();
+    };
 
+    await new Promise(r => setTimeout(r, 1000));
+    
     (document.getElementById("card") as HTMLElement).style.display = 'flex'  
 
     html2canvas((document.querySelector("#card") as HTMLElement), {scale: 2}).then(canvas => {
-      document.body.appendChild(canvas)
+      const canvasStyle = (canvas as HTMLElement).style;
+      
+      canvasStyle.height = "40vh";
+      canvasStyle.width = "";
+      canvasStyle.border= "solid #0C0C0C 0.5vh";
+      canvasStyle.borderRadius = "1vh";
+      canvasStyle.padding = "3vh";
+      
+
+      (document.querySelector("#final-container") as HTMLDivElement).appendChild(canvas);
     });
 
-    (document.getElementById("card") as HTMLElement).style.display = 'none' 
+    (document.getElementById("card") as HTMLElement).style.display = 'none';
   };
 
   const scanQRInput = (qrInput: HTMLInputElement) => {
@@ -112,7 +125,10 @@ function App() {
     (document.getElementById("card") as HTMLElement).style.display = 'none';  
     
     const printButton = document.getElementById("print-button");
-    (printButton as HTMLInputElement).onclick = () => { printCard() };
+    (printButton as HTMLInputElement).onclick = () => { 
+      printCard();
+      scrollTo(10);
+    };
 
     const TeacherFacultyInput = (document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement);
     const userPronounsInput = document.querySelectorAll('input[name="user-gender"]');
@@ -159,6 +175,7 @@ function App() {
     <>
       <div id='nav-buttons-container'>
         <ul>
+          <li><a className='nav-button'></a></li>
           <li><a className='nav-button'></a></li>
           <li><a className='nav-button'></a></li>
           <li><a className='nav-button'></a></li>
@@ -235,8 +252,12 @@ function App() {
 
         <InfoInputContainer className="infoContainer" id='print-container'>
           <InfoCard><InfoCardImage src={images[16]} alt="" id="print-button"/></InfoCard>
-          
-        </InfoInputContainer>   
+        </InfoInputContainer>  
+        
+        <InfoInputContainer className="infoContainer">
+          <div id='final-container'></div>
+        </InfoInputContainer>  
+         
       </div>
 
       <Card userName={userName} userType={userType} userPronouns={userPronouns} userMajor={userMajor} userPhone={userPhone} userEmail={userEmail} userURL={userURL} userLocation={userLocation} cardTheme={cardTheme} />
