@@ -165,9 +165,6 @@ function App() {
     cardThemePickers.forEach((element) => {(element as HTMLInputElement).onclick = () => {
       setCardTheme((document.querySelector('input[name="card-theme"]:checked') as HTMLInputElement).value)
     }});
-
-
-
   });
 
 
@@ -175,7 +172,7 @@ function App() {
     <>
       <div id='nav-buttons-container'>
         <ul>
-          <li><a className='nav-button'></a></li>
+          <li><a className='nav-button selected'></a></li>
           <li><a className='nav-button'></a></li>
           <li><a className='nav-button'></a></li>
           <li><a className='nav-button'></a></li>
