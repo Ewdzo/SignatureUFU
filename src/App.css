@@ -156,3 +156,8 @@ label {
 #userInfo > tbody > tr > td > h2, #universityInfo > tbody > tr > td > h4 {
     font-weight: 100;
 }
+
+.deactivated {
+    opacity: 0.5;
+    filter: grayscale(1);
+}
