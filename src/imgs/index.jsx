@@ -14,8 +14,9 @@ import Mail from "./mail_icon.png";
 import Phone from "./person_icon.png";
 import Location from "./location_icon.png";
 import MapPin from "./map-fill.svg";
-import Printer from "./printer-fill.svg"
+import Printer from "./printer-fill.svg";
+import QrCode from "./qr-code.svg";
 
-const images = [Student, UserGear, CircleLeft, CircleRight, IdentificationCard, GenderMale, GenderFemale, GenderNonBinary, Envelope, WhatsApp, Person, Pencil, Mail, Phone, Location, MapPin, Printer];
+const images = [Student, UserGear, CircleLeft, CircleRight, IdentificationCard, GenderMale, GenderFemale, GenderNonBinary, Envelope, WhatsApp, Person, Pencil, Mail, Phone, Location, MapPin, Printer, QrCode];
 
 export default images;
