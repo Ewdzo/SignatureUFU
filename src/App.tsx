@@ -100,10 +100,10 @@ function App() {
     (classElements[index] as HTMLElement).classList.add("selected-card");
   };
 
-  const setUseState = (element: HTMLInputElement, useStateFunction: Function) => {
-    element.onchange = () => {useStateFunction((element.value) as unknown as string);} 
-  };
+  const setUseState = (element: HTMLInputElement, useStateFunction: Function) => { element.onchange = () => { useStateFunction((element.value) as unknown as string) } };
 
+  const setOnClickListener = (elements: NodeListOf<Element>, listenerFunction: Function) => { elements.forEach( (element, index) => {(element as HTMLElement).onclick = () => { listenerFunction(elements, index)}}) };
+  
   useEffect(() => {
     const TeacherFacultyInput = (document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement);
     const userNameManualInput = (document.querySelector('input[name="user-name"]') as HTMLInputElement);
@@ -115,6 +115,13 @@ function App() {
     const userPhoneInput = (document.querySelector('input[name="user-phone"]') as HTMLInputElement);
     const userLocationInput = document.querySelectorAll('input[name="user-location"]');
     const teacherRoomInput = (document.querySelector('input[name="teacher-room"]') as HTMLInputElement);
+    const cardThemePickers = document.querySelectorAll('input[name="card-theme"]');
+    const userTypeCards = document.querySelectorAll(".info-radio-type");
+    const userGenderCards = document.querySelectorAll(".info-radio-gender");
+    const userLocationCards = document.querySelectorAll(".info-radio-location");
+    const userThemeCards = document.querySelectorAll(".info-radio-theme");
+    const printButton = document.getElementById("print-button");
+    const navButtons = document.querySelectorAll(".nav-button");
     
     setUseState(userNameManualInput, setUserName);
     setUseState(userTitleManualInput, setUserMajor);
@@ -123,59 +130,35 @@ function App() {
     setUseState(userEmailInput, setUserEmail);
     setUseState(userPhoneInput, setUserPhone);
     
-    const navButtons = document.querySelectorAll(".nav-button");
-    navButtons.forEach( (element, index) => {(element as HTMLElement).onclick = () => { scrollTo(index)}});
+    setOnClickListener(userTypeCards, selectCard);
+    setOnClickListener(userGenderCards, selectCard);
+    setOnClickListener(userLocationCards, selectCard);
+    setOnClickListener(userThemeCards, selectCard);
     
-    const userTypeCards = document.querySelectorAll(".info-radio-type");
-    userTypeCards.forEach( (element, index) => {(element as HTMLElement).onclick = () => { selectCard(userTypeCards, index)}});
+    navButtons.forEach( (element, index) => {(element as HTMLElement).onclick = () => {scrollTo(index)}});
     
-    const userGenderCards = document.querySelectorAll(".info-radio-gender");
-    userGenderCards.forEach( (element, index) => {(element as HTMLElement).onclick = () => { selectCard(userGenderCards, index)}});
-
-    const userLocationCards = document.querySelectorAll(".info-radio-location");
-    userLocationCards.forEach( (element, index) => {(element as HTMLElement).onclick = () => { selectCard(userLocationCards, index)}});
-
-    const userThemeCards = document.querySelectorAll(".info-radio-theme");
-    userThemeCards.forEach( (element, index) => {(element as HTMLElement).onclick = () => { selectCard(userThemeCards, index)}});
-
     const qrInput = document.getElementById("qr-code-submit") as HTMLInputElement;
-    qrInput.onchange = () => {  
-      scanQRInput(qrInput);
-    }
-
-    (document.getElementById("card") as HTMLElement).style.display = 'none';  
+    qrInput.onchange = () => {scanQRInput(qrInput)};
     
-    const printButton = document.getElementById("print-button");
     (printButton as HTMLInputElement).onclick = () => { 
       printCard();
       scrollTo(10);
     };
-
-
-    TeacherFacultyInput.onchange = () => { 
-      if(userType == "Professor") {setUserMajor(((document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement).value) as unknown as string)};
-    };
-
-    userPronounsInput.forEach((element) => {(element as HTMLInputElement).onclick = () => {
-      setUserPronouns((document.querySelector('input[name="user-gender"]:checked') as HTMLInputElement).value)
-    }});
-
-
-    userLocationInput.forEach((element) => {(element as HTMLInputElement).onclick = () => {
-      setUserLocation((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value)
-    }});
-
-    teacherRoomInput.onchange = () => {
-      setUserLocation(teacherRoomInput.value + " - " + ((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value))
-    };
-
-    const cardThemePickers = document.querySelectorAll('input[name="card-theme"]');
-    cardThemePickers.forEach((element) => {(element as HTMLInputElement).onclick = () => {
-      setCardTheme((document.querySelector('input[name="card-theme"]:checked') as HTMLInputElement).value)
-    }});
+    
+    TeacherFacultyInput.onchange = () => { if(userType == "Professor") {setUserMajor(((document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement).value) as unknown as string)}};
+    
+    teacherRoomInput.onchange = () => {setUserLocation(teacherRoomInput.value + " - " + ((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value))};
+    
+    userPronounsInput.forEach((element) => { (element as HTMLInputElement).onclick = () => {setUserPronouns((document.querySelector('input[name="user-gender"]:checked') as HTMLInputElement).value)}});
+    
+    userLocationInput.forEach((element) => {(element as HTMLInputElement).onclick = () => {setUserLocation((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value)}});
+    
+    cardThemePickers.forEach((element) => {(element as HTMLInputElement).onclick = () => {setCardTheme((document.querySelector('input[name="card-theme"]:checked') as HTMLInputElement).value)}});
+    
+    (document.getElementById("card") as HTMLElement).style.display = 'none';  
   });
-
-
+  
+  
   return (
     <>
       <div id='nav-buttons-container'>
