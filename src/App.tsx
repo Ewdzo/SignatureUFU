@@ -1,5 +1,4 @@
 import './App.css'
-import 'bootstrap'
 import axios from 'axios';
 import html2canvas from 'html2canvas';
 import QrScanner from 'qr-scanner';
@@ -91,7 +90,7 @@ function App() {
     const infoContainers = document.querySelectorAll(".infoContainer");
 
     (infoContainers[index] as HTMLElement).scrollIntoView({behavior: 'smooth'})
-  }
+  };
 
   const selectCard = (classElements: NodeListOf<Element>, index: number) => {
     for(let i=0; i< classElements.length; i++){
@@ -99,9 +98,31 @@ function App() {
     }
 
     (classElements[index] as HTMLElement).classList.add("selected-card");
-  }
+  };
+
+  const setUseState = (element: HTMLInputElement, useStateFunction: Function) => {
+    element.onchange = () => {useStateFunction((element.value) as unknown as string);} 
+  };
 
   useEffect(() => {
+    const TeacherFacultyInput = (document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement);
+    const userNameManualInput = (document.querySelector('input[name="user-name"]') as HTMLInputElement);
+    const userTitleManualInput = (document.querySelector('input[name="user-title"]') as HTMLInputElement);
+    const userLocationManualInput = (document.querySelector('input[name="user-location"]') as HTMLInputElement);
+    const userSiteManualInput = (document.querySelector('input[name="user-site"]') as HTMLInputElement);
+    const userPronounsInput = document.querySelectorAll('input[name="user-gender"]');
+    const userEmailInput = (document.querySelector('input[name="user-email"]') as HTMLInputElement);
+    const userPhoneInput = (document.querySelector('input[name="user-phone"]') as HTMLInputElement);
+    const userLocationInput = document.querySelectorAll('input[name="user-location"]');
+    const teacherRoomInput = (document.querySelector('input[name="teacher-room"]') as HTMLInputElement);
+    
+    setUseState(userNameManualInput, setUserName);
+    setUseState(userTitleManualInput, setUserMajor);
+    setUseState(userLocationManualInput, setUserLocation);
+    setUseState(userSiteManualInput, setUserURL);
+    setUseState(userEmailInput, setUserEmail);
+    setUseState(userPhoneInput, setUserPhone);
+    
     const navButtons = document.querySelectorAll(".nav-button");
     navButtons.forEach( (element, index) => {(element as HTMLElement).onclick = () => { scrollTo(index)}});
     
@@ -130,12 +151,6 @@ function App() {
       scrollTo(10);
     };
 
-    const TeacherFacultyInput = (document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement);
-    const userPronounsInput = document.querySelectorAll('input[name="user-gender"]');
-    const userEmailInput = (document.querySelector('input[name="user-email"]') as HTMLInputElement);
-    const userPhoneInput = (document.querySelector('input[name="user-phone"]') as HTMLInputElement);
-    const userLocationInput = document.querySelectorAll('input[name="user-location"]');
-    const teacherRoomInput = (document.querySelector('input[name="teacher-room"]') as HTMLInputElement);
 
     TeacherFacultyInput.onchange = () => { 
       if(userType == "Professor") {setUserMajor(((document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement).value) as unknown as string)};
@@ -145,13 +160,6 @@ function App() {
       setUserPronouns((document.querySelector('input[name="user-gender"]:checked') as HTMLInputElement).value)
     }});
 
-    userEmailInput.onchange = () => {
-      setUserEmail((userEmailInput.value) as unknown as string);
-    };
-
-    userPhoneInput.onchange = () => {
-      setUserPhone((userPhoneInput.value) as unknown as string);
-    };
 
     userLocationInput.forEach((element) => {(element as HTMLInputElement).onclick = () => {
       setUserLocation((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value)
