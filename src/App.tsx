@@ -185,7 +185,7 @@ function App() {
         <InfoInputContainer className="infoContainer" id='user-qr-submitter'>
           <InfoCard>
             <InfoCardImage src={images[17]} alt=""/>
-              <input type="file" id="qr-code-submit" accept=".png, .jpg, .jpeg" />
+              <input type="file" id="qr-code-submit" accept=".png, .jpg, .jpeg" style={{margin: "5%"}} />
             </InfoCard>
         </InfoInputContainer>
 
