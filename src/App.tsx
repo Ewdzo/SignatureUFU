@@ -178,13 +178,21 @@ function App() {
       </div>
       <div id='main-container'>
         <InfoInputContainer className="infoContainer" id='user-type-picker' >
-            <InfoCard className='info-radio-type'><InfoRadioButton name="user-type" id="student-teacher-type" value="student-teacher" /><label htmlFor="student-teacher-type"><InfoCardImage src={images[0]} alt="" /></label></InfoCard>
-            <InfoCard className='info-radio-type'><InfoRadioButton name="user-type" id="other-type" value="other" /><label htmlFor="other-type"><InfoCardImage src={images[1]} alt="" /></label></InfoCard>
+            <InfoCard className='info-radio-type'>
+              <InfoRadioButton name="user-type" id="student-teacher-type" value="student-teacher" />
+              <label htmlFor="student-teacher-type"><InfoCardImage src={images[0]} alt="Ícone de Estudante ou Professor" title='Estudante ou Professor' /></label>
+                <p>Estudante ou Professor</p> 
+            </InfoCard>
+            <InfoCard className='info-radio-type'>
+              <InfoRadioButton name="user-type" id="other-type" value="other" />
+              <label htmlFor="other-type"><InfoCardImage src={images[1]} alt="Ícone de Configuração Manual" title='Configuração Manual'/></label>
+              <p>Configuração Manual</p> 
+            </InfoCard>
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='user-qr-submitter'>
           <InfoCard>
-            <InfoCardImage src={images[17]} alt=""/>
+            <InfoCardImage src={images[17]} alt="Ícone de QrCode" title='QrCode'/>
               <input type="file" id="qr-code-submit" accept=".png, .jpg, .jpeg" style={{margin: "5%"}} />
             </InfoCard>
         </InfoInputContainer>
@@ -201,19 +209,21 @@ function App() {
         
         <InfoInputContainer className="infoContainer" id='teacher-faculty-container'>
           <InfoCard>
-            <InfoCardImage src={images[4]} alt="" /><InfoInputText name="teacher-faculty" id="teacher-faculty" placeholder='Ex: FACOM' />
+            <InfoCardImage src={images[4]} alt="Ícone de Crachá" title='Crachá  de Identificação' />
+            <p>Faculdade do Professor</p>
+            <InfoInputText name="teacher-faculty" id="teacher-faculty" placeholder='Ex: FACOM' />
           </InfoCard>          
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='user-pronouns-picker'>
-          <InfoCard className='info-radio-gender'><InfoRadioButton name="user-gender" id="male-gender" value="o" /><label htmlFor="male-gender"><InfoCardImage src={images[5]} /></label></InfoCard>
-          <InfoCard className='info-radio-gender'><InfoRadioButton name="user-gender" id="female-gender" value="a" /><label htmlFor="female-gender"><InfoCardImage src={images[6]} alt="" /></label></InfoCard>
-          <InfoCard className='info-radio-gender'><InfoRadioButton name="user-gender" id="other-gender" value="e" /><label htmlFor="other-gender"><InfoCardImage src={images[7]} alt="" /></label></InfoCard>           
+          <InfoCard className='info-radio-gender'><InfoRadioButton name="user-gender" id="male-gender" value="o" /><label htmlFor="male-gender"><InfoCardImage src={images[5]} /></label><p>Masculino</p></InfoCard>
+          <InfoCard className='info-radio-gender'><InfoRadioButton name="user-gender" id="female-gender" value="a" /><label htmlFor="female-gender"><InfoCardImage src={images[6]} alt="" /></label><p>Feminino</p></InfoCard>
+          <InfoCard className='info-radio-gender'><InfoRadioButton name="user-gender" id="other-gender" value="e" /><label htmlFor="other-gender"><InfoCardImage src={images[7]} alt="" /></label><p>Não-Binário</p></InfoCard>           
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='user-contact-picker'>
-          <InfoCard><InfoCardImage src={images[8]} alt="" /><InfoInputText type="email" name="user-email" id="user-email" placeholder='Ex: aluno@ufu.br' /></InfoCard>
-          <InfoCard><InfoCardImage src={images[9]} alt="" /><InfoInputText type="tel" name="user-phone" id="user-phone" placeholder='Ex: (34) 3810-1010' /></InfoCard>          
+          <InfoCard><InfoCardImage src={images[8]} alt="" /><p>Email</p><InfoInputText type="email" name="user-email" id="user-email" placeholder='Ex: aluno@ufu.br' /></InfoCard>
+          <InfoCard><InfoCardImage src={images[9]} alt="" /><p>Telefone</p><InfoInputText type="tel" name="user-phone" id="user-phone" placeholder='Ex: (34) 3810-1010' /></InfoCard>          
         </InfoInputContainer>
         
         <InfoInputContainer className="infoContainer" id='user-location-container'>
@@ -232,6 +242,7 @@ function App() {
         <InfoInputContainer className="infoContainer" id='teacher-location-container'>
           <InfoCard>
             <InfoCardImage src={images[15]} alt="" />
+            <p>Sala do Professor</p>
             <InfoInputText name="teacher-room" placeholder='Ex: A201' />
           </InfoCard>
         </InfoInputContainer>
@@ -242,7 +253,7 @@ function App() {
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='print-container'>
-          <InfoCard><InfoCardImage src={images[16]} alt="" id="print-button"/></InfoCard>
+          <InfoCard><InfoCardImage src={images[16]} alt="" id="print-button"/><p>Imprimir Assinatura</p></InfoCard>
         </InfoInputContainer>  
         
         <InfoInputContainer className="infoContainer">
