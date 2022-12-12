@@ -62,10 +62,14 @@ function App() {
           const userMajorGraduation = userMajorFull[2] + " " + userMajorFull[3] + " " + userMajorFull[4].replace(":", "");
           setUserMajor(userMajorGraduation);
           setUserType("Alun");
+          setInputs("Alun")
         }
         else {
           setUserType("Professor");
+          setInputs("Professor")
         }
+        
+        
 
         const fullName = response.nome.split(" ");
         const nameSurname = fullName[0] + " " + fullName[1];
@@ -101,60 +105,67 @@ function App() {
   };
 
   const setUseState = (element: HTMLInputElement, useStateFunction: Function) => { element.onchange = () => { useStateFunction((element.value) as unknown as string) } };
-
+  
   const setOnClickListener = (elements: NodeListOf<Element>, listenerFunction: Function) => { elements.forEach( (element, index) => {(element as HTMLElement).onclick = () => { listenerFunction(elements, index)}}) };
   
-  useEffect(() => {
-    const TeacherFacultyInput = (document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement);
-    const userNameManualInput = (document.querySelector('input[name="user-name"]') as HTMLInputElement);
-    const userTitleManualInput = (document.querySelector('input[name="user-title"]') as HTMLInputElement);
-    const userLocationManualInput = (document.querySelector('input[name="user-location"]') as HTMLInputElement);
-    const userSiteManualInput = (document.querySelector('input[name="user-site"]') as HTMLInputElement);
+  const setInputs = (type: String) => {
+    if(type == "Professor"){
+      const teacherFacultyInput = (document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement);
+      const teacherRoomInput = (document.querySelector('input[name="teacher-room"]') as HTMLInputElement);
+      
+      teacherFacultyInput.onchange = () => { if(userType == "Professor") {setUserMajor(((document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement).value) as unknown as string)}};
+      teacherRoomInput.onchange = () => {setUserLocation(teacherRoomInput.value + " - " + ((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value))};
+    }
+    else if(type == "Manual"){
+      const userNameManualInput = (document.querySelector('input[name="user-name"]') as HTMLInputElement);
+      const userTitleManualInput = (document.querySelector('input[name="user-title"]') as HTMLInputElement);
+      const userLocationManualInput = (document.querySelector('input[name="user-location"]') as HTMLInputElement);
+      const userSiteManualInput = (document.querySelector('input[name="user-site"]') as HTMLInputElement);
+      
+      setUseState(userNameManualInput, setUserName);
+      setUseState(userTitleManualInput, setUserMajor);
+      setUseState(userLocationManualInput, setUserLocation);
+      setUseState(userSiteManualInput, setUserURL);
+    }
+    
     const userPronounsInput = document.querySelectorAll('input[name="user-gender"]');
     const userEmailInput = (document.querySelector('input[name="user-email"]') as HTMLInputElement);
     const userPhoneInput = (document.querySelector('input[name="user-phone"]') as HTMLInputElement);
     const userLocationInput = document.querySelectorAll('input[name="user-location"]');
-    const teacherRoomInput = (document.querySelector('input[name="teacher-room"]') as HTMLInputElement);
-    const cardThemePickers = document.querySelectorAll('input[name="card-theme"]');
-    const userTypeCards = document.querySelectorAll(".info-radio-type");
     const userGenderCards = document.querySelectorAll(".info-radio-gender");
     const userLocationCards = document.querySelectorAll(".info-radio-location");
-    const userThemeCards = document.querySelectorAll(".info-radio-theme");
-    const printButton = document.getElementById("print-button");
-    const navButtons = document.querySelectorAll(".nav-button");
     
-    setUseState(userNameManualInput, setUserName);
-    setUseState(userTitleManualInput, setUserMajor);
-    setUseState(userLocationManualInput, setUserLocation);
-    setUseState(userSiteManualInput, setUserURL);
     setUseState(userEmailInput, setUserEmail);
     setUseState(userPhoneInput, setUserPhone);
     
-    setOnClickListener(userTypeCards, selectCard);
     setOnClickListener(userGenderCards, selectCard);
     setOnClickListener(userLocationCards, selectCard);
-    setOnClickListener(userThemeCards, selectCard);
+    
+    userPronounsInput.forEach((element) => { (element as HTMLInputElement).onclick = () => {setUserPronouns((document.querySelector('input[name="user-gender"]:checked') as HTMLInputElement).value)}});
+    userLocationInput.forEach((element) => {(element as HTMLInputElement).onclick = () => {setUserLocation((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value)}});
+  }
+  
+  useEffect(() => {
+    const printButton = document.getElementById("print-button");
+    const navButtons = document.querySelectorAll(".nav-button");
+    const cardThemePickers = document.querySelectorAll(".info-radio-theme");
+    const qrInput = document.getElementById("qr-code-submit") as HTMLInputElement;
+    const userTypeCards = document.querySelectorAll(".info-radio-type");
+    
+    setOnClickListener(userTypeCards, selectCard);
+    setOnClickListener(cardThemePickers, selectCard);
+
+    cardThemePickers.forEach((element) => {(element as HTMLInputElement).onclick = () => {setCardTheme((document.querySelector('input[name="card-theme"]:checked') as HTMLInputElement).value)}});
     
     navButtons.forEach( (element, index) => {(element as HTMLElement).onclick = () => {scrollTo(index)}});
     
-    const qrInput = document.getElementById("qr-code-submit") as HTMLInputElement;
     qrInput.onchange = () => {scanQRInput(qrInput)};
     
     (printButton as HTMLInputElement).onclick = () => { 
       printCard();
       scrollTo(10);
     };
-    
-    TeacherFacultyInput.onchange = () => { if(userType == "Professor") {setUserMajor(((document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement).value) as unknown as string)}};
-    
-    teacherRoomInput.onchange = () => {setUserLocation(teacherRoomInput.value + " - " + ((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value))};
-    
-    userPronounsInput.forEach((element) => { (element as HTMLInputElement).onclick = () => {setUserPronouns((document.querySelector('input[name="user-gender"]:checked') as HTMLInputElement).value)}});
-    
-    userLocationInput.forEach((element) => {(element as HTMLInputElement).onclick = () => {setUserLocation((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value)}});
-    
-    cardThemePickers.forEach((element) => {(element as HTMLInputElement).onclick = () => {setCardTheme((document.querySelector('input[name="card-theme"]:checked') as HTMLInputElement).value)}});
-    
+
     (document.getElementById("card") as HTMLElement).style.display = 'none';  
   });
   
@@ -176,6 +187,7 @@ function App() {
           <li><a className='nav-button'></a></li>
         </ul>        
       </div>
+      
       <div id='main-container'>
         <InfoInputContainer className="infoContainer" id='user-type-picker' >
             <InfoCard className='info-radio-type'>
@@ -209,7 +221,7 @@ function App() {
         
         <InfoInputContainer className="infoContainer" id='teacher-faculty-container'>
           <InfoCard>
-            <InfoCardImage src={images[4]} alt="Ícone de Crachá" title='Crachá  de Identificação' />
+            <InfoCardImage src={images[4]} alt="Ícone de Crachá" title='Crachá de Identificação' />
             <p>Faculdade do Professor</p>
             <InfoInputText name="teacher-faculty" id="teacher-faculty" placeholder='Ex: FACOM' />
           </InfoCard>          
@@ -222,18 +234,18 @@ function App() {
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='user-contact-picker'>
-          <InfoCard><InfoCardImage src={images[8]} alt="" /><p>Email</p><InfoInputText type="email" name="user-email" id="user-email" placeholder='Ex: aluno@ufu.br' /></InfoCard>
-          <InfoCard><InfoCardImage src={images[9]} alt="" /><p>Telefone</p><InfoInputText type="tel" name="user-phone" id="user-phone" placeholder='Ex: (34) 3810-1010' /></InfoCard>          
+          <InfoCard><InfoCardImage src={images[8]} alt="Ícone de E-mail" title='Email' /><p>Email</p><InfoInputText type="email" name="user-email" id="user-email" placeholder='Ex: aluno@ufu.br' /></InfoCard>
+          <InfoCard><InfoCardImage src={images[9]} alt="Ícone de Telefone" title='Telefone'/><p>Telefone</p><InfoInputText type="tel" name="user-phone" id="user-phone" placeholder='Ex: (34) 3810-1010' /></InfoCard>          
         </InfoInputContainer>
         
         <InfoInputContainer className="infoContainer" id='user-location-container'>
           <InfoCard className='info-radio-location'>
-            <InfoCardImage src={images[15]} alt="" />
+            <InfoCardImage src={images[15]} alt="Ícone de Pino de Localização" title='Localização' />
             <InfoRadioButton name="user-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" />
             <label htmlFor="araras-campus" style={{textAlign: "center"}}>Monte Carmelo - Araras</label>
           </InfoCard>
           <InfoCard className='info-radio-location'>
-            <InfoCardImage src={images[15]} alt="" />
+            <InfoCardImage src={images[15]} alt="Ícone de Pino de Localização" title='Localização' />
             <InfoRadioButton name="user-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" />
             <label htmlFor="boa-vista-campus" style={{textAlign: "center"}}> Monte Carmelo - Boa Vista </label>
           </InfoCard>        
@@ -241,7 +253,7 @@ function App() {
 
         <InfoInputContainer className="infoContainer" id='teacher-location-container'>
           <InfoCard>
-            <InfoCardImage src={images[15]} alt="" />
+            <InfoCardImage src={images[15]} alt="Ícone de Pino de Localização" title='Localização' />
             <p>Sala do Professor</p>
             <InfoInputText name="teacher-room" placeholder='Ex: A201' />
           </InfoCard>
@@ -253,7 +265,7 @@ function App() {
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='print-container'>
-          <InfoCard><InfoCardImage src={images[16]} alt="" id="print-button"/><p>Imprimir Assinatura</p></InfoCard>
+          <InfoCard><InfoCardImage src={images[16]} alt="Ícone de Impressora" title='Imprimir' id="print-button"/><p>Imprimir Assinatura</p></InfoCard>
         </InfoInputContainer>  
         
         <InfoInputContainer className="infoContainer">
