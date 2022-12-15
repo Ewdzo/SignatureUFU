@@ -74,13 +74,12 @@ function App() {
         const fullName = response.nome.split(" ");
         const nameSurname = fullName[0] + " " + fullName[1];
         setUserName(nameSurname);  
+        (document.getElementById("qr-feedback") as HTMLSpanElement).innerText = `Olá, ${nameSurname}`
 
       })
-      .catch(function (error) {
-        console.log(error);
-      })
+      .catch( e => (document.getElementById("qr-feedback") as HTMLSpanElement).innerText = 'Não conseguimos encontrar um QR válido na ultima imagem.')
     )
-    .catch(e => console.log('No QR code found.'));
+    .catch( e => (document.getElementById("qr-feedback") as HTMLSpanElement).innerText = 'Não conseguimos encontrar um QR válido na ultima imagem.' );
   };
 
   const scrollTo = (index: number) => {
@@ -230,6 +229,7 @@ function App() {
           <InfoCard>
             <InfoCardImage src={images[17]} alt="Ícone de QrCode" title='QrCode'/>
               <input type="file" id="qr-code-submit" accept=".png, .jpg, .jpeg" style={{margin: "5%"}} />
+              <span id='qr-feedback'></span>
             </InfoCard>
         </InfoInputContainer>
 
