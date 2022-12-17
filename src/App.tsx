@@ -262,14 +262,18 @@ function App() {
         
         <InfoInputContainer className="infoContainer" id='user-location-container'>
           <InfoCard className='info-radio-location'>
-            <InfoCardImage src={images[15]} alt="Ícone de Pino de Localização" title='Localização' />
-            <InfoRadioButton name="user-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" />
-            <label htmlFor="araras-campus" style={{textAlign: "center"}}>Monte Carmelo - Araras</label>
+            <label htmlFor="araras-campus" style={{textAlign: "center", display: "flex", flexDirection: "column"}}>
+              <InfoCardImage src={images[15]} alt="Ícone de Pino de Localização" title='Localização' />
+              <InfoRadioButton name="user-location" id="araras-campus" value="Monte Carmelo - Unidades Araras" />
+              <span className="infoTitle">Monte Carmelo - Araras</span>
+            </label>
           </InfoCard>
           <InfoCard className='info-radio-location'>
-            <InfoCardImage src={images[15]} alt="Ícone de Pino de Localização" title='Localização' />
-            <InfoRadioButton name="user-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" />
-            <label htmlFor="boa-vista-campus" style={{textAlign: "center"}}> Monte Carmelo - Boa Vista </label>
+            <label htmlFor="boa-vista-campus" style={{textAlign: "center", display: "flex", flexDirection: "column"}}> 
+              <InfoCardImage src={images[15]} alt="Ícone de Pino de Localização" title='Localização' />
+              <InfoRadioButton name="user-location" id="boa-vista-campus" value="Monte Carmelo - Unidades Boa Vista" />
+              <span className="infoTitle">Monte Carmelo - Boa Vista</span>
+            </label>
           </InfoCard>        
         </InfoInputContainer>
 
