@@ -124,7 +124,7 @@ function App() {
       teacherRoomInput.onchange = () => {setUserLocation(teacherRoomInput.value + " - " + ((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value))};
     }
     else if(type == "Manual"){
-      userTextInputs.forEach((element) => { element.removeAttribute("disabled"); console.log(element);});
+      userTextInputs.forEach((element) => { element.removeAttribute("disabled");});
       (document.getElementById("qr-code-submit") as HTMLInputElement).setAttribute("disabled", "");
 
       setUseState(userNameManualInput, setUserName);
@@ -132,24 +132,31 @@ function App() {
       setUseState(userLocationManualInput, setUserLocation);
       setUseState(userSiteManualInput, setUserURL);
     }
+
+    if(type != "Manual"){
+      const userPronounsInput = document.querySelectorAll('input[name="user-gender"]');
+      const userLocationInput = document.querySelectorAll('input[name="user-location"]');
+      const userGenderCards = document.querySelectorAll(".info-radio-gender");
+      const userLocationCards = document.querySelectorAll(".info-radio-location");
+      
+      setOnClickListener(userGenderCards, selectCard);
+      setOnClickListener(userLocationCards, selectCard);
+      
+      userPronounsInput.forEach((element) => { (element as HTMLInputElement).onclick = () => {setUserPronouns((document.querySelector('input[name="user-gender"]:checked') as HTMLInputElement).value)}});
+      userLocationInput.forEach((element) => {(element as HTMLInputElement).onclick = () => {setUserLocation((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value)}});
+    }
     
-    const userPronounsInput = document.querySelectorAll('input[name="user-gender"]');
     const userEmailInput = (document.querySelector('input[name="user-email"]') as HTMLInputElement);
     const userPhoneInput = (document.querySelector('input[name="user-phone"]') as HTMLInputElement);
-    const userLocationInput = document.querySelectorAll('input[name="user-location"]');
-    const userGenderCards = document.querySelectorAll(".info-radio-gender");
-    const userLocationCards = document.querySelectorAll(".info-radio-location");
     
     userEmailInput.removeAttribute("disabled");
     userPhoneInput.removeAttribute("disabled");
     setUseState(userEmailInput, setUserEmail);
     setUseState(userPhoneInput, setUserPhone);
-    
-    setOnClickListener(userGenderCards, selectCard);
-    setOnClickListener(userLocationCards, selectCard);
-    
-    userPronounsInput.forEach((element) => { (element as HTMLInputElement).onclick = () => {setUserPronouns((document.querySelector('input[name="user-gender"]:checked') as HTMLInputElement).value)}});
-    userLocationInput.forEach((element) => {(element as HTMLInputElement).onclick = () => {setUserLocation((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value)}});
+  };
+
+  const setChildrenOpacity = (parent: string, index: number, opacity: string) => {
+    document.querySelectorAll(parent)[index].childNodes.forEach((element) => { (element as HTMLElement).style.opacity = opacity});
   };
   
   useEffect(() => {
@@ -175,7 +182,7 @@ function App() {
     const textInputs = [userNameManualInput, userTitleManualInput, userLocationManualInput, userSiteManualInput, teacherFacultyInput, teacherRoomInput, userEmailInput, userPhoneInput];
     textInputs.forEach((element) => { element.setAttribute("disabled", "")});
     
-    (userTypeInputs[1] as HTMLInputElement).onclick = () => { setUserType("Manual"); setInputs("Manual"); scrollTo(1);};
+    (userTypeInputs[1] as HTMLInputElement).onclick = () => { setUserType("Manual"); setInputs("Manual"); scrollTo(2);};
     
     (userTypeInputs[0] as HTMLInputElement).onclick = () => { (document.getElementById("qr-code-submit") as HTMLInputElement).removeAttribute("disabled"); scrollTo(1); };
     
@@ -189,6 +196,7 @@ function App() {
     
     (document.getElementById("card") as HTMLElement).style.display = 'none';  
     (document.getElementById("qr-code-submit") as HTMLInputElement).setAttribute("disabled", "");
+
   }, []);
   
   return (
