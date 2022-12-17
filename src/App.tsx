@@ -126,7 +126,8 @@ function App() {
       teacherRoomInput.onchange = () => {setUserLocation(teacherRoomInput.value + " - " + ((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value))};
     }
     else if(type == "Manual"){
-      userTextInputs.forEach((element) => { element.removeAttribute("disabled")});
+      userTextInputs.forEach((element) => { element.removeAttribute("disabled"); console.log(element);});
+      (document.getElementById("qr-code-submit") as HTMLInputElement).setAttribute("disabled", "");
 
       setUseState(userNameManualInput, setUserName);
       setUseState(userTitleManualInput, setUserMajor);
@@ -160,7 +161,7 @@ function App() {
     const qrInput = document.getElementById("qr-code-submit") as HTMLInputElement;
 
     const userTypeCards = document.querySelectorAll(".info-radio-type");
-    const userTypeInputs = document.querySelectorAll('input[name="user-type"]');
+    const userTypeInputs = [document.querySelector('label[for="student-teacher-type"]'), document.querySelector('label[for="other-type"]') ] 
     const userNameManualInput = (document.querySelector('input[name="user-name"]') as HTMLInputElement);
     const userTitleManualInput = (document.querySelector('input[name="user-title"]') as HTMLInputElement);
     const userLocationManualInput = (document.querySelector('input[name="user-location"]') as HTMLInputElement);
@@ -172,14 +173,14 @@ function App() {
     
     setOnClickListener(userTypeCards, selectCard);
     setOnClickListener(cardThemePickers, selectCard);
-
+    
     const textInputs = [userNameManualInput, userTitleManualInput, userLocationManualInput, userSiteManualInput, teacherFacultyInput, teacherRoomInput, userEmailInput, userPhoneInput];
     textInputs.forEach((element) => { element.setAttribute("disabled", "")});
-
+    
     (userTypeInputs[1] as HTMLInputElement).onclick = () => { setUserType("Manual"); setInputs("Manual"); scrollTo(1);};
-
+    
     (userTypeInputs[0] as HTMLInputElement).onclick = () => { (document.getElementById("qr-code-submit") as HTMLInputElement).removeAttribute("disabled"); scrollTo(1); };
-
+    
     cardThemePickers.forEach((element) => {(element as HTMLInputElement).onclick = () => {setCardTheme((document.querySelector('input[name="card-theme"]:checked') as HTMLInputElement).value)}});
     
     navButtons.forEach( (element, index) => {(element as HTMLElement).onclick = () => {scrollTo(index)}});
@@ -190,8 +191,12 @@ function App() {
     
     (document.getElementById("card") as HTMLElement).style.display = 'none';  
     (document.getElementById("qr-code-submit") as HTMLInputElement).setAttribute("disabled", "");
-  });
+  }, []);
   
+  useEffect(() => {
+    
+
+  }, [])
   
   return (
     <>
