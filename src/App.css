@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&display=swap');
+
 * {
     margin: 0;
 }
@@ -6,6 +8,7 @@
 body {
     background-color: #092269;
     min-width: 100vw;
+    font-family: 'Raleway', sans-serif;
 }
 
 label {
@@ -14,6 +17,10 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.infoTitle {
+    margin: 20px 10px;
 }
 
 #root{

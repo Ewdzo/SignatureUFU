@@ -47,6 +47,7 @@ text-align: center;
 border: 0;
 border-bottom: solid 0.2vh #0C0C0C;
 
+font-family: 'Raleway', sans-serif;
 font-size: 1.7vh;
 margin: 0.5vh 0;
 width: 90%;
