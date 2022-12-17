@@ -156,7 +156,12 @@ function App() {
   };
 
   const setChildrenOpacity = (parent: string, index: number, opacity: string) => {
-    document.querySelectorAll(parent)[index].childNodes.forEach((element) => { (element as HTMLElement).style.opacity = opacity});
+    if(index < 0){
+      document.querySelectorAll(parent).forEach((element) => { element.childNodes.forEach((element) => { (element as HTMLElement).style.opacity = opacity})});
+    }
+    else{
+      document.querySelectorAll(parent)[index].childNodes.forEach((element) => { (element as HTMLElement).style.opacity = opacity});
+    }
   };
   
   useEffect(() => {
@@ -197,6 +202,8 @@ function App() {
     (document.getElementById("card") as HTMLElement).style.display = 'none';  
     (document.getElementById("qr-code-submit") as HTMLInputElement).setAttribute("disabled", "");
 
+    document.querySelectorAll(".infoContainer").forEach((element) => { element.childNodes.forEach((element) => { (element as HTMLElement).style.opacity = "10%"})});
+    document.querySelectorAll(".infoContainer")[0].childNodes.forEach((element) => { (element as HTMLElement).style.opacity = "100%"});
   }, []);
   
   return (
