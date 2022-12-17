@@ -226,6 +226,7 @@ function App() {
     
     (document.getElementById("card") as HTMLElement).style.display = 'none';  
     (document.getElementById("qr-code-submit") as HTMLInputElement).setAttribute("disabled", "");
+    (document.getElementById("home-button") as HTMLElement).onclick = () => {scrollTo(0)}
 
     setChildrenOpacity(".infoContainer", -1, "10%")
     setChildrenOpacity(".infoContainer", 0, "100%")
@@ -233,9 +234,11 @@ function App() {
   
   return (
     <>
+      <div id='home-button'><img src={images[19]} alt=""/></div>
       <div id='nav-buttons-container'>
         <ul>
-          <li><a className='nav-button selected'></a></li>
+          <li><a className='nav-button'></a></li>
+          <li><a className='nav-button'></a></li>
           <li><a className='nav-button'></a></li>
           <li><a className='nav-button'></a></li>
           <li><a className='nav-button'></a></li>
@@ -250,6 +253,12 @@ function App() {
       </div>
       
       <div id='main-container'>
+        <InfoInputContainer className="infoContainer">
+          <InfoCard>
+          <label style={{textAlign: "center", display: "flex", flexDirection: "column"}}><InfoCardImage src={images[18]} alt="Logo da Universidade Federal de Uberlândia" title='Universidade Federal de Uberlândia'></InfoCardImage><span style={{margin: "30px", fontWeight: ""}}>Bem Vindo ao Criador de Assinaturas - UFU</span></label>
+          </InfoCard>
+        </InfoInputContainer>
+
         <InfoInputContainer className="infoContainer" id='user-type-picker' >
             <InfoCard className='info-radio-type'>
               <InfoRadioButton name="user-type" id="student-teacher-type" value="student-teacher" />

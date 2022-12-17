@@ -16,7 +16,9 @@ import Location from "./location_icon.png";
 import MapPin from "./map-fill.svg";
 import Printer from "./printer-fill.svg";
 import QrCode from "./qr-code.svg";
+import UFU from "./UFU.png";
+import House from "./house-fill.svg"
 
-const images = [Student, UserGear, CircleLeft, CircleRight, IdentificationCard, GenderMale, GenderFemale, GenderNonBinary, Envelope, WhatsApp, Person, Pencil, Mail, Phone, Location, MapPin, Printer, QrCode];
+const images = [Student, UserGear, CircleLeft, CircleRight, IdentificationCard, GenderMale, GenderFemale, GenderNonBinary, Envelope, WhatsApp, Person, Pencil, Mail, Phone, Location, MapPin, Printer, QrCode, UFU, House ];
 
 export default images;
