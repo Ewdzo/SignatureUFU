@@ -11,6 +11,7 @@ import { InfoCard, InfoCardImage, InfoInputContainer, InfoInputText } from './co
 function App() {
   const [userName, setUserName] = useState<String>();
   const [userType, setUserType] = useState<String>();
+  const [majorArticle, setMajorArticle] = useState<String>("e");
   const [userPronouns, setUserPronouns] = useState<String>();
   const [userMajor, setUserMajor] = useState<String>();
   const [userPhone, setUserPhone] = useState<String>();
@@ -45,7 +46,7 @@ function App() {
     (document.getElementById("card") as HTMLElement).style.display = 'none';
   };
 
-  const scanQRInput = (qrInput: HTMLInputElement) => {
+  const scanQRInput = async (qrInput: HTMLInputElement) => {
     const qrCode = qrInput.files![0];
     if (!qrCode) {
       return;
@@ -63,10 +64,13 @@ function App() {
           setUserMajor(userMajorGraduation);
           setUserType("Alun");
           setInputs("Alun")
+          scrollTo(4)
         }
         else {
           setUserType("Professor");
           setInputs("Professor")
+          setMajorArticle("a")
+          scrollTo(3)
         }
         
         const fullName = response.nome.split(" ");
@@ -334,7 +338,7 @@ function App() {
          
       </div>
 
-      <Card userName={userName} userType={userType} userPronouns={userPronouns} userMajor={userMajor} userPhone={userPhone} userEmail={userEmail} userURL={userURL} userLocation={userLocation} cardTheme={cardTheme} />
+      <Card userName={userName} userType={userType} majorArticle={majorArticle} userPronouns={userPronouns} userMajor={userMajor} userPhone={userPhone} userEmail={userEmail} userURL={userURL} userLocation={userLocation} cardTheme={cardTheme} />
     </>
 
   )

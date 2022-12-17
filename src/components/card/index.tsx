@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import images from '../../imgs/index.jsx';
 
 export function Card(props : any) {
@@ -16,7 +17,7 @@ export function Card(props : any) {
                 <table id='userInfo'>
                     <tbody>
                         <tr><td><h1>{props.userName}</h1></td></tr>
-                        <tr><td><h2>{props.userType}{props.userPronouns} de {props.userMajor}</h2></td></tr>
+                        <tr><td><h2>{props.userType}{props.userPronouns} d{props.majorArticle} {props.userMajor}</h2></td></tr>
                         <tr><td><img src={images[12]} alt="Mail Icon" />{props.userEmail}</td></tr>
                         <tr><td><img src={images[13]} alt="Phone Icon" />{props.userPhone}</td></tr>
                         <tr><td><img src={images[10]} alt="Person Icon" />{props.userURL}</td></tr>
