@@ -73,7 +73,6 @@ function App() {
         const nameSurname = fullName[0] + " " + fullName[1];
         setUserName(nameSurname);  
         (document.getElementById("qr-feedback") as HTMLSpanElement).innerText = `Olá, ${nameSurname}`
-
       })
       .catch( e => (document.getElementById("qr-feedback") as HTMLSpanElement).innerText = 'Não conseguimos encontrar um QR válido na ultima imagem.')
     )
@@ -106,12 +105,25 @@ function App() {
   const setOnClickListener = (elements: NodeListOf<Element>, listenerFunction: Function) => { elements.forEach( (element, index) => {(element as HTMLElement).onclick = () => { listenerFunction(elements, index)}}) };
   
   const setInputs = (type: String) => {
+    setChildrenOpacity(".infoContainer", -1, "10%")
+
+    for(let i=0; i<2; i++){
+      setChildrenOpacity(".infoContainer", i, "100%")
+    }
+
     const userNameManualInput = (document.querySelector('input[name="user-name"]') as HTMLInputElement);
     const userTitleManualInput = (document.querySelector('input[name="user-title"]') as HTMLInputElement);
     const userLocationManualInput = (document.querySelector('input[name="user-location"]') as HTMLInputElement);
     const userSiteManualInput = (document.querySelector('input[name="user-site"]') as HTMLInputElement);
+    const teacherFacultyInput = (document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement);
+    const teacherRoomInput = (document.querySelector('input[name="teacher-room"]') as HTMLInputElement);
+    const userEmailInput = (document.querySelector('input[name="user-email"]') as HTMLInputElement);
+    const userPhoneInput = (document.querySelector('input[name="user-phone"]') as HTMLInputElement);
 
+    const textInputs = [userNameManualInput, userTitleManualInput, userLocationManualInput, userSiteManualInput, teacherFacultyInput, teacherRoomInput, userEmailInput, userPhoneInput];
     const userTextInputs = [userNameManualInput, userTitleManualInput, userLocationManualInput, userSiteManualInput];
+    
+    textInputs.forEach((element) => { element.setAttribute("disabled", "")});
     
     if(type == "Professor"){
       const teacherFacultyInput = (document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement);
@@ -120,8 +132,11 @@ function App() {
       teacherFacultyInput.removeAttribute("disabled");
       teacherRoomInput.removeAttribute("disabled");
 
-      teacherFacultyInput.onchange = () => { if(userType == "Professor") {setUserMajor(((document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement).value) as unknown as string)}};
+      teacherFacultyInput.onchange = () => { setUserMajor(((document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement).value) as unknown as string) };
       teacherRoomInput.onchange = () => {setUserLocation(teacherRoomInput.value + " - " + ((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value))};
+      
+      setChildrenOpacity(".infoContainer", 3, "100%");
+      setChildrenOpacity(".infoContainer", 7, "100%");
     }
     else if(type == "Manual"){
       userTextInputs.forEach((element) => { element.removeAttribute("disabled");});
@@ -131,6 +146,8 @@ function App() {
       setUseState(userTitleManualInput, setUserMajor);
       setUseState(userLocationManualInput, setUserLocation);
       setUseState(userSiteManualInput, setUserURL);
+
+      setChildrenOpacity(".infoContainer", 2, "100%")
     }
 
     if(type != "Manual"){
@@ -144,15 +161,19 @@ function App() {
       
       userPronounsInput.forEach((element) => { (element as HTMLInputElement).onclick = () => {setUserPronouns((document.querySelector('input[name="user-gender"]:checked') as HTMLInputElement).value)}});
       userLocationInput.forEach((element) => {(element as HTMLInputElement).onclick = () => {setUserLocation((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value)}});
-    }
     
-    const userEmailInput = (document.querySelector('input[name="user-email"]') as HTMLInputElement);
-    const userPhoneInput = (document.querySelector('input[name="user-phone"]') as HTMLInputElement);
+      setChildrenOpacity(".infoContainer", 4, "100%");
+      setChildrenOpacity(".infoContainer", 5, "100%");
+      setChildrenOpacity(".infoContainer", 6, "100%");
+    }
     
     userEmailInput.removeAttribute("disabled");
     userPhoneInput.removeAttribute("disabled");
     setUseState(userEmailInput, setUserEmail);
     setUseState(userPhoneInput, setUserPhone);
+    setChildrenOpacity(".infoContainer", 8, "100%");
+    setChildrenOpacity(".infoContainer", 9, "100%");
+    setChildrenOpacity(".infoContainer", 10, "100%"); 
   };
 
   const setChildrenOpacity = (parent: string, index: number, opacity: string) => {
@@ -189,7 +210,7 @@ function App() {
     
     (userTypeInputs[1] as HTMLInputElement).onclick = () => { setUserType("Manual"); setInputs("Manual"); scrollTo(2);};
     
-    (userTypeInputs[0] as HTMLInputElement).onclick = () => { (document.getElementById("qr-code-submit") as HTMLInputElement).removeAttribute("disabled"); scrollTo(1); };
+    (userTypeInputs[0] as HTMLInputElement).onclick = () => { (document.getElementById("qr-code-submit") as HTMLInputElement).removeAttribute("disabled"); scrollTo(1); setChildrenOpacity(".infoContainer", 1, "100%")};
     
     cardThemePickers.forEach((element) => {(element as HTMLInputElement).onclick = () => {setCardTheme((document.querySelector('input[name="card-theme"]:checked') as HTMLInputElement).value)}});
     
@@ -202,8 +223,8 @@ function App() {
     (document.getElementById("card") as HTMLElement).style.display = 'none';  
     (document.getElementById("qr-code-submit") as HTMLInputElement).setAttribute("disabled", "");
 
-    document.querySelectorAll(".infoContainer").forEach((element) => { element.childNodes.forEach((element) => { (element as HTMLElement).style.opacity = "10%"})});
-    document.querySelectorAll(".infoContainer")[0].childNodes.forEach((element) => { (element as HTMLElement).style.opacity = "100%"});
+    setChildrenOpacity(".infoContainer", -1, "10%")
+    setChildrenOpacity(".infoContainer", 0, "100%")
   }, []);
   
   return (
@@ -228,13 +249,11 @@ function App() {
         <InfoInputContainer className="infoContainer" id='user-type-picker' >
             <InfoCard className='info-radio-type'>
               <InfoRadioButton name="user-type" id="student-teacher-type" value="student-teacher" />
-              <label htmlFor="student-teacher-type"><InfoCardImage src={images[0]} alt="Ícone de Estudante ou Professor" title='Estudante ou Professor' /></label>
-                <span className="infoTitle">Estudante ou Professor</span> 
+              <label htmlFor="student-teacher-type" style={{textAlign: "center", display: "flex", flexDirection: "column"}}><InfoCardImage src={images[0]} alt="Ícone de Estudante ou Professor" title='Estudante ou Professor' /><span className="infoTitle">Estudante ou Professor</span></label>
             </InfoCard>
             <InfoCard className='info-radio-type'>
               <InfoRadioButton name="user-type" id="other-type" value="other" />
-              <label htmlFor="other-type"><InfoCardImage src={images[1]} alt="Ícone de Configuração Manual" title='Configuração Manual'/></label>
-              <span className="infoTitle">Configuração Manual</span> 
+              <label htmlFor="other-type" style={{textAlign: "center", display: "flex", flexDirection: "column"}}><InfoCardImage src={images[1]} alt="Ícone de Configuração Manual" title='Configuração Manual'/><span className="infoTitle">Configuração Manual</span></label>
             </InfoCard>
         </InfoInputContainer>
 
@@ -265,9 +284,9 @@ function App() {
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='user-pronouns-picker'>
-          <InfoCard className='info-radio-gender'><InfoRadioButton name="user-gender" id="male-gender" value="o" /><label htmlFor="male-gender"><InfoCardImage src={images[5]} /></label><span className="infoTitle">Masculino</span></InfoCard>
-          <InfoCard className='info-radio-gender'><InfoRadioButton name="user-gender" id="female-gender" value="a" /><label htmlFor="female-gender"><InfoCardImage src={images[6]} alt="" /></label><span className="infoTitle">Feminino</span></InfoCard>
-          <InfoCard className='info-radio-gender'><InfoRadioButton name="user-gender" id="other-gender" value="e" /><label htmlFor="other-gender"><InfoCardImage src={images[7]} alt="" /></label><span className="infoTitle">Não-Binário</span></InfoCard>           
+          <InfoCard className='info-radio-gender'><InfoRadioButton name="user-gender" id="male-gender" value="o" /><label htmlFor="male-gender" style={{textAlign: "center", display: "flex", flexDirection: "column"}}><InfoCardImage src={images[5]} /><span className="infoTitle">Masculino</span></label></InfoCard>
+          <InfoCard className='info-radio-gender'><InfoRadioButton name="user-gender" id="female-gender" value="a" /><label htmlFor="female-gender" style={{textAlign: "center", display: "flex", flexDirection: "column"}}><InfoCardImage src={images[6]} alt="" /><span className="infoTitle">Feminino</span></label></InfoCard>
+          <InfoCard className='info-radio-gender'><InfoRadioButton name="user-gender" id="other-gender" value="e" /><label htmlFor="other-gender" style={{textAlign: "center", display: "flex", flexDirection: "column"}}><InfoCardImage src={images[7]} alt="" /><span className="infoTitle">Não-Binário</span></label></InfoCard>           
         </InfoInputContainer>
 
         <InfoInputContainer className="infoContainer" id='user-contact-picker'>
