@@ -110,11 +110,11 @@ function App() {
   
   const setInputs = (type: String) => {
     setChildrenOpacity(".infoContainer", -1, "10%")
-
+    
     for(let i=0; i<3; i++){
       setChildrenOpacity(".infoContainer", i, "100%")
     }
-
+    
     const userNameManualInput = (document.querySelector('input[name="user-name"]') as HTMLInputElement);
     const userTitleManualInput = (document.querySelector('input[name="user-title"]') as HTMLInputElement);
     const userLocationManualInput = (document.querySelector('input[name="user-location"]') as HTMLInputElement);
@@ -123,7 +123,8 @@ function App() {
     const teacherRoomInput = (document.querySelector('input[name="teacher-room"]') as HTMLInputElement);
     const userEmailInput = (document.querySelector('input[name="user-email"]') as HTMLInputElement);
     const userPhoneInput = (document.querySelector('input[name="user-phone"]') as HTMLInputElement);
-
+    const cardThemeButtons = (document.querySelectorAll('input[name="white-theme"]'));
+    
     const textInputs = [userNameManualInput, userTitleManualInput, userLocationManualInput, userSiteManualInput, teacherFacultyInput, teacherRoomInput, userEmailInput, userPhoneInput];
     const userTextInputs = [userNameManualInput, userTitleManualInput, userLocationManualInput, userSiteManualInput];
     
@@ -135,7 +136,7 @@ function App() {
       
       teacherFacultyInput.removeAttribute("disabled");
       teacherRoomInput.removeAttribute("disabled");
-
+      
       teacherFacultyInput.onchange = () => { setUserMajor(((document.querySelector('input[name="teacher-faculty"]') as HTMLInputElement).value) as unknown as string) };
       teacherRoomInput.onchange = () => {setUserLocation(teacherRoomInput.value + " - " + ((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value))};
       
@@ -145,15 +146,15 @@ function App() {
     else if(type == "Manual"){
       userTextInputs.forEach((element) => { element.removeAttribute("disabled");});
       (document.getElementById("qr-code-submit") as HTMLInputElement).setAttribute("disabled", "");
-
+      
       setUseState(userNameManualInput, setUserName);
       setUseState(userTitleManualInput, setUserMajor);
       setUseState(userLocationManualInput, setUserLocation);
       setUseState(userSiteManualInput, setUserURL);
-
+      
       setChildrenOpacity(".infoContainer", 2, "100%")
     }
-
+    
     if(type != "Manual"){
       const userPronounsInput = document.querySelectorAll('input[name="user-gender"]');
       const userLocationInput = document.querySelectorAll('input[name="user-location"]');
@@ -163,14 +164,15 @@ function App() {
       setOnClickListener(userGenderCards, selectCard);
       setOnClickListener(userLocationCards, selectCard);
       
-      userPronounsInput.forEach((element) => { (element as HTMLInputElement).onclick = () => {setUserPronouns((document.querySelector('input[name="user-gender"]:checked') as HTMLInputElement).value)}});
-      userLocationInput.forEach((element) => {(element as HTMLInputElement).onclick = () => {setUserLocation((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value);}});
-    
+      userPronounsInput.forEach((element) => { (element as HTMLInputElement).onclick = () => {setUserPronouns((document.querySelector('input[name="user-gender"]:checked') as HTMLInputElement).value); scrollTo(6);}});
+      userLocationInput.forEach((element) => {(element as HTMLInputElement).onclick = () => {setUserLocation((document.querySelector('input[name="user-location"]:checked') as HTMLInputElement).value); scrollTo(9);}});
+      
       setChildrenOpacity(".infoContainer", 5, "100%");
       setChildrenOpacity(".infoContainer", 6, "100%");
       setChildrenOpacity(".infoContainer", 7, "100%");
     }
     
+    cardThemeButtons.forEach((element) => {(element as HTMLInputElement).onclick = () => {setCardTheme((document.querySelector('input[name="card-theme"]:checked') as HTMLInputElement).value); scrollTo(10);}});
     userEmailInput.removeAttribute("disabled");
     userPhoneInput.removeAttribute("disabled");
     setUseState(userEmailInput, setUserEmail);
@@ -192,7 +194,7 @@ function App() {
   useEffect(() => {
     const printButton = document.getElementById("print-button");
     const navButtons = document.querySelectorAll(".nav-button");
-    const cardThemePickers = document.querySelectorAll(".info-radio-theme");
+    const cardThemeCards = document.querySelectorAll(".info-radio-theme");
     const qrInput = document.getElementById("qr-code-submit") as HTMLInputElement;
 
     const userTypeCards = document.querySelectorAll(".info-radio-type");
@@ -207,16 +209,15 @@ function App() {
     const userPhoneInput = (document.querySelector('input[name="user-phone"]') as HTMLInputElement);
     
     setOnClickListener(userTypeCards, selectCard);
-    setOnClickListener(cardThemePickers, selectCard);
+    setOnClickListener(cardThemeCards, selectCard);
     
     const textInputs = [userNameManualInput, userTitleManualInput, userLocationManualInput, userSiteManualInput, teacherFacultyInput, teacherRoomInput, userEmailInput, userPhoneInput];
     textInputs.forEach((element) => { element.setAttribute("disabled", "")});
     
     (userTypeInputs[1] as HTMLInputElement).onclick = () => { setUserType("Manual"); setInputs("Manual"); scrollTo(3);};
     
-    (userTypeInputs[0] as HTMLInputElement).onclick = () => { (document.getElementById("qr-code-submit") as HTMLInputElement).removeAttribute("disabled"); scrollTo(2); setChildrenOpacity(".infoContainer", 1, "100%")};
+    (userTypeInputs[0] as HTMLInputElement).onclick = () => { (document.getElementById("qr-code-submit") as HTMLInputElement).removeAttribute("disabled"); scrollTo(2); setChildrenOpacity(".infoContainer", 2, "100%")};
     
-    cardThemePickers.forEach((element) => {(element as HTMLInputElement).onclick = () => {setCardTheme((document.querySelector('input[name="card-theme"]:checked') as HTMLInputElement).value)}});
     
     navButtons.forEach( (element, index) => {(element as HTMLElement).onclick = () => {scrollTo(index)}});
     
@@ -228,10 +229,9 @@ function App() {
     (document.getElementById("qr-code-submit") as HTMLInputElement).setAttribute("disabled", "");
     (document.getElementById("home-button") as HTMLElement).onclick = () => {scrollTo(0)}
 
-    for(let i= -1; i<2; i++){
-      setChildrenOpacity(".infoContainer", i, "100%")
-    }
-    setChildrenOpacity(".infoContainer", -1, "100%")
+    setChildrenOpacity(".infoContainer", -1, "10%")
+    setChildrenOpacity(".infoContainer", 0, "100%")
+    setChildrenOpacity(".infoContainer", 1, "100%")
   }, []);
   
   return (
